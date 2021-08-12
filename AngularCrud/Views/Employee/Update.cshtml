@@ -1,8 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Update";
 }
 <script src="~/Scripts/angular.js"></script>
-<script src="~/Scripts/Employee/Angularcode.js"></script>
+<script src="~/Scripts/Angularcode.js"></script>
 
 <style>
     .btn-space {
@@ -41,7 +41,6 @@
                 <td>
                     <b>Description</b>
                 </td>
-
                 <td>
                     <b>Actions</b>
                 </td>
@@ -72,7 +71,7 @@
                     {{Emp.Description}}
                 </td>
                 <td>
-                    <input type="button" class="btn btn-warning" value="Update" ng-click="UpdateEmp(Emp)" />
+                    <input type="button" class="btn btn-danger" value="Update" ng-click="UpdateEmp(Emp)" />
                     <input type="button" class="btn btn-danger" value="Delete" ng-click="DeleteEmp(Emp)" />
                 </td>
             </tr>
@@ -113,7 +112,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Age:</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" id="inputLabel3" placeholder="Age" ng-model="Age">
+                                <input type="text" class="form-control" id="inputLabel3" placeholder="Age" ng-model="EmpAge">
                             </div>
                         </div>
                     </div>
@@ -125,12 +124,11 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-6 col-lg-4">
                         <div class="form-group">
                             <label class="col-md-4 control-label">HireDate:</label>
                             <div class="col-md-8">
-                                <input type="date" class="form-control" id="inputLabel3" placeholder="HireDate" ng-model="HireDate">
+                                <input type="date" class="form-control" id="inputLabel3" placeholder="HireDate" ng-model="Salary">
                             </div>
                         </div>
                     </div>
@@ -139,14 +137,13 @@
                     <label>Description</label>
                     <textarea ng-model="Description" md-maxlength="150" rows="5" md-select-on-focus></textarea>
                 </md-input-container>
-
                 <div class="row">
                     <div class="col-sm-6 col-lg-4">
-                        <input type="button" id="btnSave" class="form-control btn-space" value="Submit" ng-click="InsertData()" />
+                        <input type="button" id="btnSave" class="form-control btn-space" value="Update" ng-click="UpdateEmp(Emp)" />
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
     @Html.Hidden("ID")
 

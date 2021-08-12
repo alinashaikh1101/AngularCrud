@@ -1,6 +1,6 @@
 ﻿
 using AngularCrud;
-using AngularCrud.Models;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,13 +48,17 @@ namespace AngularCRUD.Controllers
         /// <returns></returns>  
         /// 
         [HttpPost]
-        public string Insert_Employee(Employee Employe)
+        public string Insert_Employee(Employee Emp)
         {
-            if (Employe != null)
+            
+            if (Emp != null)
             {
                 using (DemoEntities Obj = new DemoEntities())
                 {
-                    Obj.Employees.Add(Employe);
+
+                    
+
+                    Obj.Employees.Add(Emp);
                     Obj.SaveChanges();
                     return "Employee Added Successfully";
                 }
@@ -75,20 +79,24 @@ namespace AngularCRUD.Controllers
             {
                 using (DemoEntities Obj = new DemoEntities())
                 {
-                    var Emp_ = Obj.Entry(Emp);
-                    if (Emp_.State == System.Data.Entity.EntityState.Detached)
+                    var employee = Obj.Employees.Where(s => s.Id == Emp.Id).FirstOrDefault();
+                    if (employee != null)
                     {
-                        Obj.Employees.Attach(Emp);
-                        Obj.Employees.Remove(Emp);
+                        Obj.Employees.Remove(employee);
+                        Obj.SaveChanges();
+                        return "Employee Deleted Successfully";
                     }
-                    Obj.SaveChanges();
-                    return "Employee Deleted Successfully";
+                    else
+                    {
+                        return "Employee not found.";
+                    }
                 }
             }
             else
             {
                 return "Employee Not Deleted! Try Again";
             }
+
         }
         /// <summary>  
         /// Update Employee Information  
@@ -104,10 +112,10 @@ namespace AngularCRUD.Controllers
                 {
                     var Emp_ = Obj.Entry(Emp);
                     Employee EmpObj = Obj.Employees.Where(x => x.Id == Emp.Id).FirstOrDefault();
-                    EmpObj.Age = Emp.Age;
-                    EmpObj.City = Emp.City;
                     EmpObj.FirstName = Emp.FirstName;
                     EmpObj.LastName = Emp.LastName;
+                    EmpObj.City = Emp.City;
+                    EmpObj.Age = Emp.Age;
                     Obj.SaveChanges();
                     return "Employee Updated Successfully";
                 }
@@ -116,6 +124,7 @@ namespace AngularCRUD.Controllers
             {
                 return "Employee Not Updated! Try Again";
             }
+            
         }
     }
 }

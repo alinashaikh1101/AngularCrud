@@ -32,6 +32,8 @@ namespace AngularCrud
         public string LastName { get; set; }
         public string City { get; set; }
         public int Age { get; set; }
+
+        public int Salary { get; set; }
         
 
     }

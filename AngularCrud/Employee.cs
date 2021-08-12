@@ -20,5 +20,6 @@ namespace AngularCrud
         public string City { get; set; }
         public int Age { get; set; }
         public int Salary { get; set; }
+        public DateTime HireDate { get; internal set; }
     }
 }
