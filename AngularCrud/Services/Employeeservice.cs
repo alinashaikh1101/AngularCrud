@@ -39,7 +39,8 @@ namespace AngularCrud.Services
                 City = s.City,
                 Age = s.Age,
                 Salary = s.Salary,
-                HireDate = s.HireDate
+                HireDate = s.HireDate,
+                Description = s.Description,
             }).FirstOrDefault();
             return Employee;
 
@@ -55,8 +56,8 @@ namespace AngularCrud.Services
                 City = EmpInfoDto.City,
                 Age = EmpInfoDto.Age,
                 Salary = EmpInfoDto.Salary,
-                HireDate = EmpInfoDto.HireDate
-
+                HireDate = EmpInfoDto.HireDate,
+                Description = EmpInfoDto.Description
             };
             db.Employees.Add(stdnt);
             return db.SaveChanges();
@@ -78,7 +79,8 @@ namespace AngularCrud.Services
                 EmpInfoDto.Age = EmpInfoDto.Age;
                 EmpInfoDto.Salary = EmpInfoDto.Salary;
                 EmpInfoDto.HireDate = EmpInfoDto.HireDate;
-                
+                EmpInfoDto.Description = EmpInfoDto.Description;
+
 
 
 

@@ -16,5 +16,6 @@ namespace AngularCrud.Models
 
         public int Salary { get; set; }
         public DateTime HireDate { get; set; }
+        public string Description { get; set; }
     }
 }

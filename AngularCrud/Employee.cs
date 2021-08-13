@@ -21,5 +21,6 @@ namespace AngularCrud
         public int Age { get; set; }
         public int Salary { get; set; }
         public DateTime HireDate { get; internal set; }
+        public string Description { get; internal set; }
     }
 }
