@@ -13,7 +13,7 @@ namespace AngularCrud.Services
 
         public List<EmployeeViewModel> GetEmployeeList()
         {
-           
+
 
             var Employee = db.Employees.Select(s => new EmployeeViewModel
             {
@@ -21,10 +21,11 @@ namespace AngularCrud.Services
                 FirstName = s.FirstName,
                 LastName = s.LastName,
                 City = s.City,
-                Age =s.Age,
+                Age = s.Age,
                 Salary = s.Salary,
-                HireDate = s.HireDate
-                
+                HireDate = s.HireDate,
+                Description = s.Description
+
             }).ToList();
             return Employee;
         }
@@ -35,7 +36,7 @@ namespace AngularCrud.Services
             {
                 Id = s.Id,
                 FirstName = s.FirstName,
-                LastName =s.LastName,
+                LastName = s.LastName,
                 City = s.City,
                 Age = s.Age,
                 Salary = s.Salary,
@@ -52,7 +53,7 @@ namespace AngularCrud.Services
             {
                 Id = EmpInfoDto.Id,
                 FirstName = EmpInfoDto.FirstName,
-                LastName= EmpInfoDto.LastName,
+                LastName = EmpInfoDto.LastName,
                 City = EmpInfoDto.City,
                 Age = EmpInfoDto.Age,
                 Salary = EmpInfoDto.Salary,
@@ -66,7 +67,7 @@ namespace AngularCrud.Services
         public string Update_Employee(EmployeeViewModel EmpInfoDto)
         {
             var Employees = db.Employees.Where(s => s.Id == EmpInfoDto.Id).FirstOrDefault();
-            if (Employees == null)
+            if (EmpInfoDto == null)
             {
                 return "Employee info not found.";
             }
@@ -81,16 +82,12 @@ namespace AngularCrud.Services
                 EmpInfoDto.HireDate = EmpInfoDto.HireDate;
                 EmpInfoDto.Description = EmpInfoDto.Description;
 
-
-
-
-
-
                 db.Entry(EmpInfoDto).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return "Employee updated successfully.";
             }
         }
+       
     }
 }
     

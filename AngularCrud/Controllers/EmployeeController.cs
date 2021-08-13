@@ -73,6 +73,7 @@ namespace AngularCRUD.Controllers
         /// </summary>  
         /// <param name="Emp"></param>  
         /// <returns></returns>  
+        
         public string Delete_Employee(Employee Emp)
         {
             if (Emp != null)
