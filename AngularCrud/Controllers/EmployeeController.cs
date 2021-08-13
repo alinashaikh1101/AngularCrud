@@ -73,7 +73,7 @@ namespace AngularCRUD.Controllers
         /// </summary>  
         /// <param name="Emp"></param>  
         /// <returns></returns>  
-        
+        [HttpDelete]
         public string Delete_Employee(Employee Emp)
         {
             if (Emp != null)
@@ -117,6 +117,8 @@ namespace AngularCRUD.Controllers
                     EmpObj.LastName = Emp.LastName;
                     EmpObj.City = Emp.City;
                     EmpObj.Age = Emp.Age;
+                    EmpObj.Salary = Emp.Salary;
+                    EmpObj.HireDate = Emp.HireDate;
                     Obj.SaveChanges();
                     return "Employee Updated Successfully";
                 }

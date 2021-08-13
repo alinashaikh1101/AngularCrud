@@ -67,11 +67,7 @@ namespace AngularCrud.Services
         public string Update_Employee(EmployeeViewModel EmpInfoDto)
         {
             var Employees = db.Employees.Where(s => s.Id == EmpInfoDto.Id).FirstOrDefault();
-            if (EmpInfoDto == null)
-            {
-                return "Employee info not found.";
-            }
-            else
+            if (EmpInfoDto != null)
             {
                 EmpInfoDto.Id = EmpInfoDto.Id;
                 EmpInfoDto.FirstName = EmpInfoDto.FirstName;
@@ -86,7 +82,14 @@ namespace AngularCrud.Services
                 db.SaveChanges();
                 return "Employee updated successfully.";
             }
+            else
+            {
+               
+                return "Employee  not updated.";
+            }
         }
+        
+       
        
     }
 }
