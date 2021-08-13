@@ -2,7 +2,7 @@
     ViewBag.Title = "Index";
 }
 <script src="~/Scripts/angular.js"></script>
-<script src="~/Scripts/Employee/Angularcode.js"></script>
+<script src="~/Scripts/Angularcode.js"></script>
 
 <style>
     .btn-space {
@@ -72,8 +72,8 @@
                     {{Emp.Description}}
                 </td>
                 <td>
-                    <input type="button" class="btn btn-warning" value="Update" ng-click="UpdateEmp(Emp)" />
-                    <input type="button" class="btn btn-danger" value="Delete" ng-click="DeleteEmp(Emp)" />
+                    <input type="button" class="btn btn-warning" value="Update" ng-click="UpdateEmp(EmpInfoDto)" />
+                    <input type="button" class="btn btn-danger" value="Delete" ng-click="DeleteEmp(EmpInfoDto)" />
                 </td>
             </tr>
         </table>
