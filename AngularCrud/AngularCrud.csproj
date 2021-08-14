@@ -212,6 +212,7 @@
     <Compile Include="Services\Employeeservice.cs" />
     <Compile Include="Services\EmployeeService1.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\StudentController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -293,6 +294,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Update.cshtml" />
+    <Content Include="Views\Student\Student.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

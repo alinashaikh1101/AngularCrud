@@ -25,7 +25,24 @@ namespace AngularCrud
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
-            
+
+            bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                     "~/Scripts/Ng/Site.js",
+                       "~/Scripts/Ng/BaseController.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                    "~/Scripts/Angular.js",
+                    "~/Scripts/angular-aria.js",
+                    "~/Scripts/angular-messages.js",
+                    "~/Scripts/angular-animate.js",
+                    "~/Scripts/angular-sanitize.js",
+                    "~/Scripts/angular-touch.js",
+                      "~/Scripts/angular-animate.js",
+                   "~/Scripts/angular-material.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/Student/").Include(
+                      "~/Content/SCSS/StudentStyle.css"));
+                     
         }
     }
 }
