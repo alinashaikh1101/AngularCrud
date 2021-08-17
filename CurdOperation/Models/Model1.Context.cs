@@ -7,36 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AngularCrud
+namespace CurdOperation.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-    public partial class DemoEntities : DbContext
+    
+    public partial class DemoEntities1 : DbContext
     {
-        public DemoEntities()
-            : base("name=DemoEntities")
+        public DemoEntities1()
+            : base("name=DemoEntities1")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Employee> Employees { get; set; }
-
-        public int id { get; set; }
-        public  string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string City { get; set; }
-        public int Age { get; set; }
-
-        public int Salary { get; set; } 
-       public string Description { get; set; }
-        public DateTime HireDate { get; set; }
-        public IEnumerable<object> Student { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
     }
 }

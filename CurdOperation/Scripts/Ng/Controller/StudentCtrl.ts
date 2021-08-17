@@ -18,6 +18,17 @@ module CurdOperationExtension {
             this.lastName = "shaikh";
             this.rollNumber = 1;
             this.myDate = new Date();
+
+            angular.module('studentApp', ['ngMaterial', 'ngMessages'])
+
+                .controller('PathwayCtrl', function ($scope) {
+                    $scope.project = {
+                        description: 'Nuclear Missile Defense System',
+                        rate: 500,
+                        special: true
+
+                    };
+                });     
         }
 
         $onInit() {

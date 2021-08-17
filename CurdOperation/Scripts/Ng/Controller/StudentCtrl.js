@@ -27,6 +27,14 @@ var CurdOperationExtension;
             _this.lastName = "shaikh";
             _this.rollNumber = 1;
             _this.myDate = new Date();
+            angular.module('studentApp', ['ngMaterial', 'ngMessages'])
+                .controller('PathwayCtrl', function ($scope) {
+                $scope.project = {
+                    description: 'Nuclear Missile Defense System',
+                    rate: 500,
+                    special: true
+                };
+            });
             return _this;
         }
         PathwayCtrl.prototype.$onInit = function () {

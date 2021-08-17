@@ -44,7 +44,7 @@ namespace CurdOperation
             bundles.Add(new StyleBundle("~/Content/Student").Include(
                       "~/Content/SCSS/StudentStyle.css"));
             bundles.Add(new StyleBundle("~/Content/AngularMaterial").Include(
-                      "~/Content/angular-material.css"));
+                      "~/Content/angular-material.css"));   
 
             bundles.Add(new ScriptBundle("~/bundles/student").Include(
                        "~/Scripts/Ng/Service/StudentDataService.js",

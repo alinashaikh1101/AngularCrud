@@ -1,6 +1,6 @@
 ﻿/// <reference path="../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../typings/jQuery/jquery.d.ts" />
-
+    
 module CurdOperationExtension {
 
     import ajaxApi = Workpulse.Site.AjaxApi;
