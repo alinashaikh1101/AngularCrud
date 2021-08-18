@@ -11,12 +11,14 @@ namespace CurdOperation.Views.Student
 
         public string ClientName { get; set; }
 
-        public string Project_Type { get; set; }
+       
         public string Description { get; set; }
 
         public string ClientEmail { get; set; }
 
-        public int Hourly_Rate { get; set; }
-
+        
+        public int HourlyRate { get; internal set; }
+        public string ProjecType { get; internal set; }
+       
     }
 }

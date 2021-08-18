@@ -13,10 +13,10 @@ namespace CurdOperation.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DemoEntities1 : DbContext
+    public partial class DemoEntities2 : DbContext
     {
-        public DemoEntities1()
-            : base("name=DemoEntities1")
+        public DemoEntities2()
+            : base("name=DemoEntities2")
         {
         }
     
@@ -25,7 +25,6 @@ namespace CurdOperation.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
     }
 }
