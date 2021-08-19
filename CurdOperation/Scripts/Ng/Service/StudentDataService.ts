@@ -16,7 +16,7 @@ module CurdOperationExtension {
         postSkill(pathway: IStudentModel): ng.IPromise<IStudentModel> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44397/student";
+            var apiUrl = "https://localhost:44301/Student/InsertClient";
             ajaxApi({
                 url: apiUrl,
                 data: JSON.stringify(pathway),
@@ -26,7 +26,8 @@ module CurdOperationExtension {
                     deferred.resolve(response);
                 },
                 error: (xhr) => {
-                    Workpulse.Site.Alert(xhr)
+                    console.log(xhr)
+                    Workpulse.Site.AlertJS(xhr)
                     deferred.reject(xhr);
                 }
             });

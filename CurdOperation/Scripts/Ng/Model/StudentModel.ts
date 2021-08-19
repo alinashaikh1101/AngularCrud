@@ -4,7 +4,7 @@
         description: string;
         clientName: string;
         clientEmail: string;
-        ProjectType: string;
-        HourlyRate: number;
+        projectType: string;
+        hourlyRate: number;
     }
 }

@@ -1,4 +1,7 @@
-﻿.inputdemoErrors .inputErrorsApp {
+﻿body .btnColor {
+  color: red; }
+
+.inputdemoErrors .inputErrorsApp {
   min-height: 48px; }
 
 .inputdemoErrors md-input-container > p {

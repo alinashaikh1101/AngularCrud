@@ -3,16 +3,19 @@
 }
 @section HeadContent {
     @Styles.Render("~/Content/Student")
+    @Styles.Render("~/Content/AngularMaterial")
+
 }
 
 
 <div ng-app="studentApp" ng-controller="PathwayCtrl as vm">
+    <br />
+    <br />
+    <br />
+    <br />
     <md-content layout-padding>
         <form name="projectForm">
-            <br />
-            <br />
-            <br />
-            <br />
+
             <md-input-container class="md-block">
                 <label>Description</label>
                 <input md-maxlength="30" required md-no-asterisk name="description" ng-model="project.description">
@@ -33,7 +36,7 @@
 
                 <md-input-container flex="50">
                     <label>Project Type</label>
-                    <md-select name="type" ng-model="project.type" required>
+                    <md-select name="ProjectType" ng-model="project.projectType" required>
                         <md-option value="app">Application</md-option>
                         <md-option value="web">Website</md-option>
                     </md-select>
@@ -42,13 +45,14 @@
                     </div>
                 </md-input-container>
             </div>
+
             <md-input-container class="md-block">
                 <label>Client Email</label>
                 <input required type="email" name="clientEmail" ng-model="project.clientEmail"
-                       minlength="10" maxlength="100" />
+                       minlength="10" maxlength="100" @*ng-pattern='/^.+@.+\..+$/'*@ />
 
                 <div ng-messages="projectForm.clientEmail.$error" role="alert">
-                    <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
                         Your email must be between 10 and 100 characters long and look like an e-mail address.
                     </div>
                 </div>
@@ -56,7 +60,7 @@
 
             <md-input-container class="md-block">
                 <label>Hourly Rate (USD)</label>
-                <input required type="number" step="any" name="rate" ng-model="project.rate" min="800"
+                <input required type="number" step="any" name="rate" ng-model="project.hourlyRate" min="800"
                        max="4999" ng-pattern="/^1234$/" />
 
                 <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
@@ -82,7 +86,7 @@
             </md-input-container>
 
             <md-input-container class="md-block">
-                <md-checkbox name="tos" ng-model="project.tos" ng- required>
+                <md-checkbox name="tos" ng-model="project.tos" required>
                     I accept the terms of service.
                 </md-checkbox>
                 <div ng-messages="projectForm.tos.$error" multiple md-auto-hide="false">
@@ -111,11 +115,9 @@
             </p>
         </form>
     </md-content>
-
-
-    @section scripts{
-        @Scripts.Render("~/bundles/Angular")
-        @Scripts.Render("~/bundles/Common")
-        @Scripts.Render("~/Bundle/Student")
-    }
 </div>
+@section scripts{
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/common")
+    @Scripts.Render("~/bundles/student")
+}

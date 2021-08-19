@@ -17,8 +17,7 @@ namespace CurdOperation.Views.Student
         public string ClientEmail { get; set; }
 
         
-        public int HourlyRate { get; internal set; }
-        public string ProjecType { get; internal set; }
-       
+        public int HourlyRate { get;  set; }
+        public string ProjectType { get;  set; }
     }
 }

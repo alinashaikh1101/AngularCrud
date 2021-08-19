@@ -11,7 +11,7 @@ var CurdOperationExtension;
         StudentDataService.prototype.postSkill = function (pathway) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44397/student";
+            var apiUrl = "https://localhost:44301/Student/InsertClient";
             ajaxApi({
                 url: apiUrl,
                 data: JSON.stringify(pathway),
@@ -21,7 +21,8 @@ var CurdOperationExtension;
                     deferred.resolve(response);
                 },
                 error: function (xhr) {
-                    Workpulse.Site.Alert(xhr);
+                    console.log(xhr);
+                    Workpulse.Site.AlertJS(xhr);
                     deferred.reject(xhr);
                 }
             });

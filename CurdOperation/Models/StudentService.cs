@@ -15,13 +15,18 @@ namespace CurdOperation.Models
         {
            
         }
+
+        public StudentService()
+        {
+        }
+        
         public int AddClient(StudentDto model)
         {
             Client Client = new Client()
             {
                 Id = model.Id,
                 ClientName = model.ClientName,
-                ProjectType = model.ProjecType,
+                ProjectType = model.ProjectType,
                 Description = model.Description,
                 ClientEmail = model.ClientEmail,
                 HourlyRate = model.HourlyRate,
@@ -29,7 +34,7 @@ namespace CurdOperation.Models
 
             db.Clients.Add(Client);
 
-            return db.SaveChanges();
+            return db.SaveChanges();    
         }
         public int UpdateClient(StudentDto model)
         {
@@ -37,7 +42,7 @@ namespace CurdOperation.Models
             if(client != null)
             {
                 client.ClientName = model.ClientName;
-                client.ProjectType = model.ProjecType;
+                client.ProjectType = model.ProjectType;
                 client.Description = model.Description;
                 client.ClientEmail = model.ClientEmail;
                 client.HourlyRate = model.HourlyRate;
@@ -62,7 +67,7 @@ namespace CurdOperation.Models
                     ClientEmail = clients.ClientEmail,
                     ClientName = clients.ClientName,
                     Description = clients.Description,
-                    ProjecType = clients.ProjectType,
+                    ProjectType = clients.ProjectType,
                     HourlyRate = clients.HourlyRate,
                     Id = clients.Id
                 };
@@ -82,7 +87,7 @@ namespace CurdOperation.Models
                     ClientEmail = client.ClientEmail,
                     ClientName = client.ClientName,
                     Description = client.Description,
-                    ProjecType = client.ProjectType,
+                    ProjectType = client.ProjectType,
                     HourlyRate = client.HourlyRate,
                     Id = client.Id
                 };

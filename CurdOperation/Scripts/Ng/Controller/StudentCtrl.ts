@@ -6,13 +6,6 @@ module CurdOperationExtension {
       
         loading: boolean;
         loadingTask: boolean;
-        Description: String;
-        ClientName: String;
-        ClientEmail: String;
-        Projecttype: String;
-        HourlyRate: String;
-        
-        
 
         project: IStudentModel
 
@@ -22,18 +15,6 @@ module CurdOperationExtension {
         // lastName: String;
         // rollNumber: Number;
         // myDate: any;
-
-        Description: String;
-        ClientName: String;
-        ClientEmail: String;
-        Projecttype: String;
-        HourlyRate: String;
-        
-        special: String;
-
-        InsertClient() {
-
-        }
 
         $scope: CurdOperationExtension.IPathwayScope;
         private $mdDialog: any;
@@ -50,11 +31,11 @@ module CurdOperationExtension {
 
             }
             $scope.project = {
-                description: 'Nuclear Missile Defense System',
+                description: '',
                 clientEmail: '',
                 clientName: '',
-                ProjectType: '',
-                HourlyRate:
+                projectType: '',
+                hourlyRate: 800
             };
         }
 
@@ -65,6 +46,7 @@ module CurdOperationExtension {
         }
 
         insertClient = () => {
+            console.log(this.$scope.project);
             this.dataSvc.postSkill(this.$scope.project).then((data) => {
                 console.log(data);
             }).catch((error) => {

@@ -22,26 +22,34 @@ var CurdOperationExtension;
         function PathwayCtrl($scope, dataSvc, $timeout, $mdDialog, $mdSelect, $mdToast) {
             var _this = _super.call(this, $scope, $mdToast) || this;
             _this.dataSvc = dataSvc;
+            _this.insertClient = function () {
+                console.log(_this.$scope.project);
+                _this.dataSvc.postSkill(_this.$scope.project).then(function (data) {
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
             _this.$scope = $scope;
-            _this.firstName = "alina";
-            _this.lastName = "shaikh";
-            _this.rollNumber = 1;
-            _this.myDate = new Date();
-            angular.module('studentApp', ['ngMaterial', 'ngMessages'])
-                .controller('PathwayCtrl', function ($scope) {
-                $scope.project = {
-                    description: 'Nuclear Missile Defense System',
-                    rate: 500,
-                    special: true
-                };
-            });
+            // this.firstName = "Alina";
+            // this.lastName = "";
+            // this.rollNumber = 2;
+            //  this.$scope.firstName = "alina";
+            //   this.myDate = new Date();
+            $scope.GetAllData = {};
+            $scope.project = {
+                description: '',
+                clientEmail: '',
+                clientName: '',
+                projectType: '',
+                hourlyRate: 800
+            };
             return _this;
         }
         PathwayCtrl.prototype.$onInit = function () {
         };
         PathwayCtrl.prototype.init = function () {
-        };
-        PathwayCtrl.prototype.getStudent = function () {
         };
         return PathwayCtrl;
     }(wp.angularBase.BaseCtrl));
