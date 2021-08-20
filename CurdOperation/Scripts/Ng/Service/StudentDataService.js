@@ -49,7 +49,7 @@ var CurdOperationExtension;
         StudentDataService.prototype.DeleteClient = function (id) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44301/student/DeleteClient/" + id;
+            var apiUrl = "https://localhost:44301/student/DeleteClientById/" + id;
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,

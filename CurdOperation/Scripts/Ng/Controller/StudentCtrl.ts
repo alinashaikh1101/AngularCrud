@@ -79,6 +79,7 @@ module CurdOperationExtension {
             this.dataSvc.DeleteClient(id).then((data) => {
                 
                 console.log(data);
+                this.GetClientList();
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {

@@ -57,8 +57,7 @@ namespace CurdOperation.Controllers
             var result = service.GetClientList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        [HttpDelete]
-        public JsonResult DeleteClient(int id)
+        public JsonResult DeleteClientById(int id)
         {
         var result = service.DeleteClient(id);
         return Json(result, JsonRequestBehavior.AllowGet);

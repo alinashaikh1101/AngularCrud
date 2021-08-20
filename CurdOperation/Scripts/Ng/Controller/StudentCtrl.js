@@ -43,6 +43,7 @@ var CurdOperationExtension;
             _this.DeleteClient = function (id) {
                 _this.dataSvc.DeleteClient(id).then(function (data) {
                     console.log(data);
+                    _this.GetClientList();
                 }).catch(function (error) {
                     console.log(error);
                 }).finally(function () {

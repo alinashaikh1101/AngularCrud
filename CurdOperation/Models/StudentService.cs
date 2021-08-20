@@ -103,7 +103,7 @@ namespace CurdOperation.Models
         public int DeleteClient(int id)
         {
             var client = db.Clients.Where(s => s.Id == id).FirstOrDefault();
-            if (client == null)
+            if (client != null)
             {
                 db.Clients.Remove(client);
                 return db.SaveChanges();
