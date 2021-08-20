@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "List";
+}
+@section HeadContent {
+    @Styles.Render("~/Content/Student")
+    @Styles.Render("~/Content/AngularMaterial")
+
+}
+<h2>List</h2>
+
+<div ng-app="studentApp" ng-controller="PathwayCtrl as vm">
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>ClientName</th>
+            <th>Description</th>
+            <th>ClientEmail</th>
+            <th>HourlyRate</th>
+            <th>ProjectType</th>
+        </tr>
+       
+        <tr ng-repeat="data in vm.studentList">
+
+            <td>{{data.Id}}</td>
+            <td>{{data.ClientName}}</td>
+            <td>{{data.Description}}</td>
+            <td>{{data.ClientEmail}}</td>
+            <td>{{data.HourlyRate}}</td>
+            <td>{{data.ProjectType}}</td>
+           
+            <td><md-button class="md-raised md-primary" ng-click="vm.UpdateClient()" type="submit">Update</md-button></td>
+            <td><md-button class="md-raised md-primary" ng-click="vm.DeleteClient(data.Id)" type="submit">Delete</md-button></td>
+        </tr>
+       
+    </table>
+
+
+
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/common")
+    @Scripts.Render("~/bundles/student")
+}

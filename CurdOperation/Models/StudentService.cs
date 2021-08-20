@@ -56,6 +56,7 @@ namespace CurdOperation.Models
             }
         }
 
+       
         public List<StudentDto> GetClientList()
         {
             var client = db.Clients.ToList();
@@ -98,10 +99,11 @@ namespace CurdOperation.Models
                 return null;
             }
         }
+        
         public int DeleteClient(int id)
         {
             var client = db.Clients.Where(s => s.Id == id).FirstOrDefault();
-            if (client != null)
+            if (client == null)
             {
                 db.Clients.Remove(client);
                 return db.SaveChanges();

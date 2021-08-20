@@ -37,6 +37,10 @@ module CurdOperationExtension {
                 projectType: '',
                 hourlyRate: 800
             };
+
+            this.GetClientList();
+           // this.DeleteClient(id);
+            
         }
 
         $onInit() {
@@ -56,10 +60,42 @@ module CurdOperationExtension {
             })
         }
 
-    }
+        studentList: IStudentModel[];
+        GetClientList = () => {
+            this.dataSvc.getPathwayDetail().then((data) => {
+                this.studentList = data;
+                console.log(data);
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+
+
+
+            })
+            
+            
+        }
+        DeleteClient = (id) => {
+            this.dataSvc.DeleteClient(id).then((data) => {
+                
+                console.log(data);
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+
+
+
+            })
+        }
+ }
     PathwayCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 
     var app = angular.module("studentApp", ['ngMaterial', 'ngMessages', 'ngSanitize']);
     app.factory('StudentDataService', ['$http', '$q', StudentDataService.StudentDataServiceFactory]);
     app.controller('PathwayCtrl', PathwayCtrl);
+}
+
+
+function id(id: any) {
+    throw new Error("Function not implemented.");
 }

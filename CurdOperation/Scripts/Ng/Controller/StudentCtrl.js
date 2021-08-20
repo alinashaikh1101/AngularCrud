@@ -31,6 +31,23 @@ var CurdOperationExtension;
                 }).finally(function () {
                 });
             };
+            _this.GetClientList = function () {
+                _this.dataSvc.getPathwayDetail().then(function (data) {
+                    _this.studentList = data;
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
+            _this.DeleteClient = function (id) {
+                _this.dataSvc.DeleteClient(id).then(function (data) {
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
             _this.$scope = $scope;
             // this.firstName = "Alina";
             // this.lastName = "";
@@ -45,7 +62,9 @@ var CurdOperationExtension;
                 projectType: '',
                 hourlyRate: 800
             };
+            _this.GetClientList();
             return _this;
+            // this.DeleteClient(id);
         }
         PathwayCtrl.prototype.$onInit = function () {
         };
@@ -59,4 +78,7 @@ var CurdOperationExtension;
     app.factory('StudentDataService', ['$http', '$q', CurdOperationExtension.StudentDataService.StudentDataServiceFactory]);
     app.controller('PathwayCtrl', PathwayCtrl);
 })(CurdOperationExtension || (CurdOperationExtension = {}));
+function id(id) {
+    throw new Error("Function not implemented.");
+}
 //# sourceMappingURL=StudentCtrl.js.map
