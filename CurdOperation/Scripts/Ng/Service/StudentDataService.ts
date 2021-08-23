@@ -70,6 +70,46 @@ module CurdOperationExtension {
             });
             return deferred.promise;
         }
+        UpdateClient(id): ng.IPromise<IStudentModel> {
+            var self = this;
+            var deferred = self.qService.defer<IStudentModel>();
+            var apiUrl = "https://localhost:44301/Student/UpdateClientById" + id;
+            ajaxApi({
+                type: 'POST',
+                contentType:-'application/json',
+                url: apiUrl,
+                success: (response: IStudentModel) => {
+                    deferred.resolve(response);
+                },
+                error: (xhr) => {
+                    console.log(xhr)
+                    Workpulse.Site.AlertJS(xhr)
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        }
+        ViewClient(id): ng.IPromise<IStudentModel> {
+            var self = this;
+            var deferred = self.qService.defer<IStudentModel>();
+            var apiUrl = "https://localhost:44301/Student/ViewClientById" + id;
+            ajaxApi({
+                type: 'POST',
+                contentType: -'application/json',
+                url: apiUrl,
+                success: (response: IStudentModel) => {
+                    deferred.resolve(response);
+                },
+                error: (xhr) => {
+                    console.log(xhr)
+                    Workpulse.Site.AlertJS(xhr)
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        }
+
+        
 
 
 

@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "ViewClient";
+}
+@section HeadContent {
+    @Styles.Render("~/Content/Student")
+    @Styles.Render("~/Content/AngularMaterial")
+
+}
+<input type="hidden" id="id">
+
+
+
+
+
+
+
+
+@Html.ActionLink("Back to List", "List")
+@section scripts{
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/common")
+    @Scripts.Render("~/bundles/student")
+}

@@ -2,8 +2,8 @@
 /// <reference path="../../typings/jQuery/jquery.d.ts" />
 module CurdOperationExtension {
     export interface IPathwayScope extends ng.IScope {
-        
-      
+
+
         loading: boolean;
         loadingTask: boolean;
 
@@ -39,8 +39,9 @@ module CurdOperationExtension {
             };
 
             this.GetClientList();
-           // this.DeleteClient(id);
-            
+
+            // this.DeleteClient(id);
+
         }
 
         $onInit() {
@@ -72,30 +73,58 @@ module CurdOperationExtension {
 
 
             })
-            
-            
+
+
         }
         DeleteClient = (id) => {
+
+            
+
             this.dataSvc.DeleteClient(id).then((data) => {
-                
+
+              console.log(data);
+               this.GetClientList();
+            }).catch((error) => {
+               console.log(error);
+            }).finally(() => {
+
+           })
+        }
+
+        UpdateClient = (id) => {
+            window.location.href = "/Student/Update/" + id;
+
+            //this.dataSvc.UpdateClient(id).then((data) => {
+               //console.log(data);
+
+            //}).catch((error) => {
+                //console.log(error);
+            //}).finally(() => {
+
+            //})
+        }
+        ViewClient = (id) => {
+            window.location.href = "/Student/View/" + id;
+
+            this.dataSvc.ViewClient(id).then((data) => {
                 console.log(data);
-                this.GetClientList();
+
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {
 
-
-
             })
         }
- }
+
+        
+    }
+
     PathwayCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 
     var app = angular.module("studentApp", ['ngMaterial', 'ngMessages', 'ngSanitize']);
     app.factory('StudentDataService', ['$http', '$q', StudentDataService.StudentDataServiceFactory]);
     app.controller('PathwayCtrl', PathwayCtrl);
 }
-
 
 function id(id: any) {
     throw new Error("Function not implemented.");

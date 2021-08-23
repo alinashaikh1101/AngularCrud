@@ -7,7 +7,7 @@
 
 }
 
-
+<input type="hidden" id="Id">
 <div ng-app="studentApp" ng-controller="PathwayCtrl as vm">
     <br />
     <br />
@@ -107,7 +107,8 @@
                 </div>
             </md-input-container>
             <div>
-                <md-button class="md-raised md-primary" ng-click="vm.UpdateClient()" type="submit">Submit</md-button>
+                <md-button class="md-raised md-primary" ng-click="vm.UpdateClient(data.Id)" type="submit">Update</md-button>
+                
             </div>
 
             <p style="font-size:.8em; width: 100%; text-align: center;">

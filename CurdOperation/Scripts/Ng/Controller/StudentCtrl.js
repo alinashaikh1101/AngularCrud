@@ -49,6 +49,24 @@ var CurdOperationExtension;
                 }).finally(function () {
                 });
             };
+            _this.UpdateClient = function (id) {
+                window.location.href = "/Student/Update/" + id;
+                //this.dataSvc.UpdateClient(id).then((data) => {
+                //console.log(data);
+                //}).catch((error) => {
+                //console.log(error);
+                //}).finally(() => {
+                //})
+            };
+            _this.ViewClient = function (id) {
+                window.location.href = "/Student/View/" + id;
+                _this.dataSvc.ViewClient(id).then(function (data) {
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
             _this.$scope = $scope;
             // this.firstName = "Alina";
             // this.lastName = "";

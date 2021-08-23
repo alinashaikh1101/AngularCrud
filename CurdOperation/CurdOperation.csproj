@@ -1108,9 +1108,11 @@
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\List.cshtml" />
     <Content Include="Views\Student\Update.cshtml" />
+    <Content Include="Views\Student\ViewClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Update\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

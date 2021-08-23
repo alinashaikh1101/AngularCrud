@@ -19,7 +19,7 @@
             <th>HourlyRate</th>
             <th>ProjectType</th>
         </tr>
-       
+
         <tr ng-repeat="data in vm.studentList">
 
             <td>{{data.Id}}</td>
@@ -28,16 +28,18 @@
             <td>{{data.ClientEmail}}</td>
             <td>{{data.HourlyRate}}</td>
             <td>{{data.ProjectType}}</td>
-           
-            <td><md-button class="md-raised md-primary" ng-click="vm.UpdateClient()" type="submit">Update</md-button></td>
-            <td><md-button class="md-raised md-primary" ng-click="vm.DeleteClient(data.Id)" type="submit">Delete</md-button></td>
+
+            <td><md-button class="md-raised md-primary" ng-click="vm.UpdateClient(data.Id)" type="submit">Update</md-button></td>
+            <td><md-button class="md-raised md-accent" ng-click="vm.DeleteClient(data.Id)" type="submit">Delete</md-button></td>
+            <td><md-button class="md-raised md-success" ng-click="vm.ViewClient(data.Id)" type="submit">View</md-button></td>
         </tr>
-       
+
     </table>
 
 
 
 </div>
+@Html.ActionLink("Back to Index", "Index")
 @section scripts{
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/common")

@@ -22,10 +22,10 @@ namespace CurdOperation.Controllers
 
             return View();
         }
-        public ActionResult Edit()
-        {
-            return View();
-        }
+        //public ActionResult Edit()
+        //{
+            //return View();
+        //}
         public ActionResult List()
         {
 
@@ -42,14 +42,22 @@ namespace CurdOperation.Controllers
             return View();
         }
 
+        public ActionResult ViewClient(int id)
+        {
+           ViewBag.Id = id;
+
+           return View();
+        }
+
+
         public JsonResult InsertClient(StudentDto model)
         {
             var result = service.AddClient(model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult UpdateClient(StudentDto model)
+         public JsonResult UpdateClientById(int id)
         {
-            var result = service.UpdateClient(model);
+            int result = service.UpdateClient(id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetClientList()
@@ -61,6 +69,12 @@ namespace CurdOperation.Controllers
         {
         var result = service.DeleteClient(id);
         return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult ViewClientById(int id)
+        {
+            var result = service.ViewClient(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

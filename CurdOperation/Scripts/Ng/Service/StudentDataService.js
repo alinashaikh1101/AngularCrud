@@ -64,6 +64,44 @@ var CurdOperationExtension;
             });
             return deferred.promise;
         };
+        StudentDataService.prototype.UpdateClient = function (id) {
+            var self = this;
+            var deferred = self.qService.defer();
+            var apiUrl = "https://localhost:44301/Student/UpdateClientById" + id;
+            ajaxApi({
+                type: 'POST',
+                contentType: -'application/json',
+                url: apiUrl,
+                success: function (response) {
+                    deferred.resolve(response);
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                    Workpulse.Site.AlertJS(xhr);
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        };
+        StudentDataService.prototype.ViewClient = function (id) {
+            var self = this;
+            var deferred = self.qService.defer();
+            var apiUrl = "https://localhost:44301/Student/ViewClientById" + id;
+            ajaxApi({
+                type: 'POST',
+                contentType: -'application/json',
+                url: apiUrl,
+                success: function (response) {
+                    deferred.resolve(response);
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                    Workpulse.Site.AlertJS(xhr);
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        };
         StudentDataService.StudentDataServiceFactory = function ($http, $q) {
             return new StudentDataService($http, $q);
         };

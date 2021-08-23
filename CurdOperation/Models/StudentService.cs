@@ -4,22 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
 namespace CurdOperation.Models
 {
     public class StudentService
     {
         DemoEntities2 db = new DemoEntities2();
-        
+
 
         public StudentService(DemoEntities2 db)
         {
-           
+
         }
 
         public StudentService()
         {
         }
-        
+
         public int AddClient(StudentDto model)
         {
             Client Client = new Client()
@@ -34,29 +35,46 @@ namespace CurdOperation.Models
 
             db.Clients.Add(Client);
 
-            return db.SaveChanges();    
+            return db.SaveChanges();
         }
+
+
         public int UpdateClient(StudentDto model)
         {
             var client = db.Clients.Where(s => s.Id == model.Id).FirstOrDefault();
-            if(client != null)
+            if (client != null)
             {
+                
                 client.ClientName = model.ClientName;
-                client.ProjectType = model.ProjectType;
-                client.Description = model.Description;
                 client.ClientEmail = model.ClientEmail;
+                client.Description = model.Description;
+                client.ProjectType = model.ProjectType;
                 client.HourlyRate = model.HourlyRate;
 
-                db.Entry(client).State = System.Data.Entity.EntityState.Modified;
+                db.Entry<Client>(client).State = System.Data.Entity.EntityState.Modified;
                 return db.SaveChanges();
             }
             else
             {
-                return 1;
+                return -1;
             }
         }
 
-       
+        internal int UpdateClient(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal object ViewClient(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        //internal object UpdateClient(int id)
+        //{
+        //throw new NotImplementedException();
+        //}
+
         public List<StudentDto> GetClientList()
         {
             var client = db.Clients.ToList();
@@ -99,7 +117,7 @@ namespace CurdOperation.Models
                 return null;
             }
         }
-        
+
         public int DeleteClient(int id)
         {
             var client = db.Clients.Where(s => s.Id == id).FirstOrDefault();
@@ -113,6 +131,31 @@ namespace CurdOperation.Models
                 return 0;
             }
         }
-    }
-}
+            
+            public int ViewClient(StudentDto model)
+            {
+                var client = db.Clients.Where(s => s.Id == model.Id).FirstOrDefault();
+                if (client != null)
+                {
+
+                    client.ClientName = model.ClientName;
+                    client.ClientEmail = model.ClientEmail;
+                    client.Description = model.Description;
+                    client.ProjectType = model.ProjectType;
+                    client.HourlyRate = model.HourlyRate;
+
+                    db.Entry<Client>(client).State = System.Data.Entity.EntityState.Modified;
+                    return db.SaveChanges();
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+
+
+        }
+        }
+    
+
 
