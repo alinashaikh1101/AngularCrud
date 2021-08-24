@@ -17,47 +17,15 @@ var __extends = (this && this.__extends) || (function () {
 /// <reference path="../../typings/jQuery/jquery.d.ts" />
 var CurdOperationExtension;
 (function (CurdOperationExtension) {
-    var PathwayCtrl = /** @class */ (function (_super) {
-        __extends(PathwayCtrl, _super);
-        function PathwayCtrl($scope, dataSvc, $timeout, $mdDialog, $mdSelect, $mdToast) {
+    var DeleteCtrl = /** @class */ (function (_super) {
+        __extends(DeleteCtrl, _super);
+        function DeleteCtrl($scope, dataSvc, $timeout, $mdDialog, $mdSelect, $mdToast) {
             var _this = _super.call(this, $scope, $mdToast) || this;
             _this.dataSvc = dataSvc;
-            _this.insertClient = function () {
-                console.log(_this.$scope.project);
-                _this.dataSvc.postSkill(_this.$scope.project).then(function (data) {
-                    console.log(data);
-                }).catch(function (error) {
-                    console.log(error);
-                }).finally(function () {
-                });
-            };
-            _this.GetClientList = function () {
-                _this.dataSvc.getPathwayDetail().then(function (data) {
-                    _this.studentList = data;
-                    console.log(data);
-                }).catch(function (error) {
-                    console.log(error);
-                }).finally(function () {
-                });
-            };
             _this.DeleteClient = function (id) {
                 _this.dataSvc.DeleteClient(id).then(function (data) {
-                    _this.showMessage("Deleted successfully");
                     console.log(data);
                     _this.GetClientList();
-                }).catch(function (error) {
-                    console.log(error);
-                }).finally(function () {
-                });
-            };
-            _this.UpdateClient = function (id) {
-                window.location.href = "/Student/Update/" + id;
-                _this.showMessage("Updated successfully");
-            };
-            _this.ViewClient = function (Id) {
-                window.location.href = "/Student/ViewClient/" + Id;
-                _this.dataSvc.ViewClient(id).then(function (data) {
-                    console.log(data);
                 }).catch(function (error) {
                     console.log(error);
                 }).finally(function () {
@@ -77,23 +45,23 @@ var CurdOperationExtension;
                 projectType: '',
                 hourlyRate: 800
             };
-            _this.GetClientList();
             return _this;
+            //this.GetClientList();
             // this.DeleteClient(id);
         }
-        PathwayCtrl.prototype.$onInit = function () {
+        DeleteCtrl.prototype.$onInit = function () {
         };
-        PathwayCtrl.prototype.init = function () {
+        DeleteCtrl.prototype.init = function () {
         };
-        return PathwayCtrl;
+        return DeleteCtrl;
     }(wp.angularBase.BaseCtrl));
-    CurdOperationExtension.PathwayCtrl = PathwayCtrl;
-    PathwayCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
+    CurdOperationExtension.DeleteCtrl = DeleteCtrl;
+    DeleteCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
     var app = angular.module("studentApp", ['ngMaterial', 'ngMessages', 'ngSanitize']);
     app.factory('StudentDataService', ['$http', '$q', CurdOperationExtension.StudentDataService.StudentDataServiceFactory]);
-    app.controller('PathwayCtrl', PathwayCtrl);
+    app.controller('DeleteCtrl', DeleteCtrl);
 })(CurdOperationExtension || (CurdOperationExtension = {}));
-function id_(id_) {
+function id(_id) {
     throw new Error("Function not implemented.");
 }
-//# sourceMappingURL=StudentCtrl.js.map
+//# sourceMappingURL=DeleteCtrl.js.map

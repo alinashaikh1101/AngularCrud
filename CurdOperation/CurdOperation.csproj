@@ -188,6 +188,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentUpdateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1112,6 +1113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\StudentUpdate\" />
     <Folder Include="Views\Update\" />
   </ItemGroup>
   <ItemGroup>
@@ -1129,7 +1131,9 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Ng\BaseController.ts" />
+    <TypeScriptCompile Include="Scripts\Ng\Controller\DeleteCtrl.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Controller\StudentCtrl.ts" />
+    <TypeScriptCompile Include="Scripts\Ng\Controller\UpdateCtrl.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Model\StudentModel.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Service\StudentDataService.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Site.ts" />

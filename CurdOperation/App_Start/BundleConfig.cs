@@ -43,6 +43,11 @@ namespace CurdOperation
 
             bundles.Add(new StyleBundle("~/Content/Student").Include(
                       "~/Content/SCSS/StudentStyle.css"));
+           
+            bundles.Add(new StyleBundle("~/Content/StudentUpdate").Include(
+                      "~/Content/SCSS/StudentStyle.css",
+                        "~/Content/angular-material.css"));
+
 
             bundles.Add(new StyleBundle("~/Content/AngularMaterial").Include(
                       "~/Content/angular-material.css"));   
@@ -50,6 +55,10 @@ namespace CurdOperation
             bundles.Add(new ScriptBundle("~/bundles/student").Include(
                        "~/Scripts/Ng/Service/StudentDataService.js",
                       "~/Scripts/Ng/Controller/StudentCtrl.js"));
+          
+            bundles.Add(new ScriptBundle("~/bundles/StudentUpdate").Include(
+                       "~/Scripts/Ng/Service/StudentDataService.js",
+                      "~/Scripts/Ng/Controller/UpdateCtrl.js"));
 
             BundleTable.EnableOptimizations = false;
         }

@@ -31,10 +31,13 @@ namespace CurdOperation.Controllers
 
             return View();
         }
-        public ActionResult Update()
+        public ActionResult Update(int id)
         {
+            ViewBag.Id = id;
 
             return View();
+
+            
         }
         public ActionResult DeleteClient()
         {
@@ -42,9 +45,9 @@ namespace CurdOperation.Controllers
             return View();
         }
 
-        public ActionResult ViewClient(int id)
+        public ActionResult ViewClient(int Id)
         {
-           ViewBag.Id = id;
+           ViewBag.Id = Id;
 
            return View();
         }
@@ -55,9 +58,9 @@ namespace CurdOperation.Controllers
             var result = service.AddClient(model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-         public JsonResult UpdateClientById(int id)
+         public JsonResult UpdateClientById(StudentDto model)
         {
-            int result = service.UpdateClient(id);
+            int result = service.UpdateClient(model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetClientList()
@@ -71,9 +74,9 @@ namespace CurdOperation.Controllers
         return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ViewClientById(int id)
+        public JsonResult ViewClientById(int Id)
         {
-            var result = service.ViewClient(id);
+            var result = service.GetClientList(Id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
     }

@@ -89,10 +89,10 @@ module CurdOperationExtension {
             });
             return deferred.promise;
         }
-        ViewClient(id): ng.IPromise<IStudentModel> {
+        ViewClient(Id): ng.IPromise<IStudentModel> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44301/Student/ViewClientById" + id;
+            var apiUrl = "https://localhost:44301/Student/ViewClientById/" + Id;
             ajaxApi({
                 type: 'POST',
                 contentType: -'application/json',

@@ -83,10 +83,10 @@ var CurdOperationExtension;
             });
             return deferred.promise;
         };
-        StudentDataService.prototype.ViewClient = function (id) {
+        StudentDataService.prototype.ViewClient = function (Id) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44301/Student/ViewClientById" + id;
+            var apiUrl = "https://localhost:44301/Student/ViewClientById/" + Id;
             ajaxApi({
                 type: 'POST',
                 contentType: -'application/json',

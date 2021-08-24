@@ -2,13 +2,13 @@
     ViewBag.Title = "Update";
 }
 @section HeadContent {
-    @Styles.Render("~/Content/Student")
+    @Styles.Render("~/Content/StudentUpdate")
     @Styles.Render("~/Content/AngularMaterial")
 
 }
 
-<input type="hidden" id="Id">
-<div ng-app="studentApp" ng-controller="PathwayCtrl as vm">
+<input Id="hdnId" value="@ViewBag.Id" />
+<div ng-app="studentApp" ng-controller="UpdateCtrl as vm">
     <br />
     <br />
     <br />
@@ -18,7 +18,7 @@
 
             <md-input-container class="md-block">
                 <label>Description</label>
-                <input md-maxlength="30" required md-no-asterisk name="description" ng-model="project.description">
+                <input md-maxlength="30" required md-no-asterisk name="description" ng-model="project.Description">
                 <div ng-messages="projectForm.description.$error">
                     <div ng-message="required">This is required.</div>
                     <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
@@ -28,7 +28,7 @@
             <div layout="row">
                 <md-input-container flex="50">
                     <label>Client Name</label>
-                    <input required name="clientName" ng-model="project.clientName">
+                    <input required name="clientName" ng-model="project.ClientName">
                     <div ng-messages="projectForm.clientName.$error">
                         <div ng-message="required">This is required.</div>
                     </div>
@@ -36,7 +36,7 @@
 
                 <md-input-container flex="50">
                     <label>Project Type</label>
-                    <md-select name="ProjectType" ng-model="project.projectType" required>
+                    <md-select name="ProjectType" ng-model="project.ProjectType" required>
                         <md-option value="app">Application</md-option>
                         <md-option value="web">Website</md-option>
                     </md-select>
@@ -48,7 +48,7 @@
 
             <md-input-container class="md-block">
                 <label>Client Email</label>
-                <input required type="email" name="clientEmail" ng-model="project.clientEmail"
+                <input required type="email" name="clientEmail" ng-model="project.ClientEmail"
                        minlength="10" maxlength="100" @*ng-pattern='/^.+@.+\..+$/'*@ />
 
                 <div ng-messages="projectForm.clientEmail.$error" role="alert">
@@ -60,7 +60,7 @@
 
             <md-input-container class="md-block">
                 <label>Hourly Rate (USD)</label>
-                <input required type="number" step="any" name="rate" ng-model="project.hourlyRate" min="800"
+                <input required type="number" step="any" name="rate" ng-model="project.HourlyRate" min="800"
                        max="4999" ng-pattern="/^1234$/" />
 
                 <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
@@ -121,5 +121,5 @@
 @section scripts{
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/common")
-    @Scripts.Render("~/bundles/student")
+    @Scripts.Render("~/bundles/StudentUpdate")
 }
