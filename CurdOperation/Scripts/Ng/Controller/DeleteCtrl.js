@@ -23,12 +23,24 @@ var CurdOperationExtension;
             var _this = _super.call(this, $scope, $mdToast) || this;
             _this.dataSvc = dataSvc;
             _this.DeleteClient = function (id) {
-                _this.dataSvc.DeleteClient(id).then(function (data) {
-                    console.log(data);
-                    _this.GetClientList();
-                }).catch(function (error) {
-                    console.log(error);
-                }).finally(function () {
+                var confirm = _this.$mdDialog.confirm()
+                    .title('Would you like to delete your client?')
+                    .textContent('')
+                    .ariaLabel('')
+                    .targetEvent(null)
+                    .ok('')
+                    .cancel('');
+                _this.$mdDialog.show(confirm).then(function () {
+                    _this.dataSvc.DeleteClient(id).then(function (data) {
+                        _this.showMessage("Deleted successfully");
+                        console.log(data);
+                        _this.DeleteClient(id);
+                        _this.GetClientList();
+                    }).catch(function (error) {
+                        console.log(error);
+                    }).finally(function () {
+                    });
+                }, function () {
                 });
             };
             _this.$scope = $scope;

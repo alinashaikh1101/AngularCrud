@@ -53,19 +53,29 @@ module CurdOperationExtension {
 
         DeleteClient = (id) => {
 
+            var confirm = this.$mdDialog.confirm()
+                .title('Would you like to delete your client?')
+                .textContent('')
+                .ariaLabel('')
+                .targetEvent(null)
+                .ok('')
+                .cancel('');
 
+            this.$mdDialog.show(confirm).then(() => {
+                this.dataSvc.DeleteClient(id).then((data) => {
+                    this.showMessage("Deleted successfully");
+                    console.log(data);
+                    this.DeleteClient(id);
+                    this.GetClientList();
+                }).catch((error) => {
+                    console.log(error);
+                }).finally(() => {
 
-            this.dataSvc.DeleteClient(id).then((data) => {
-
-                console.log(data);
-                this.GetClientList();
-            }).catch((error) => {
-                console.log(error);
-            }).finally(() => {
-
-            })
+                })
+            }, () => {
+            });
         }
-    }
+        }
     DeleteCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 
     var app = angular.module("studentApp", ['ngMaterial', 'ngMessages', 'ngSanitize']);

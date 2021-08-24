@@ -22,6 +22,8 @@ module CurdOperationExtension {
 
             super($scope, $mdToast);
             this.$scope = $scope;
+            this.$mdDialog = $mdDialog;
+
             // this.firstName = "Alina";
             // this.lastName = "";
             // this.rollNumber = 2;
@@ -78,23 +80,40 @@ module CurdOperationExtension {
         }
         DeleteClient = (id) => {
 
+            var confirm = this.$mdDialog.confirm()
+                .title('Would you like to delete your client?')
+                .textContent('')
+                .ariaLabel('')
+                .targetEvent(null)
+                .ok('Please do it!')
+                .cancel('cancel');
+
+           this. $mdDialog.show(confirm).then( () =>{
+                this.dataSvc.DeleteClient(id).then((data) => {
+                    this.showMessage("Deleted successfully");
+                    console.log(data);
+                   
+                    //this.DeleteClient(id);
+                    this.GetClientList();
+                    
+                }).catch((error) => {
+                    console.log(error);
+                }).finally(() => {
+
+                })
+            },  () =>{
+            });
+
+
             
-
-            this.dataSvc.DeleteClient(id).then((data) => {
-                this.showMessage("Deleted successfully");
-              console.log(data);
-               this.GetClientList();
-            }).catch((error) => {
-               console.log(error);
-            }).finally(() => {
-
-           })
         }
 
         UpdateClient = (id) => {
             window.location.href = "/Student/Update/" + id;
             this.showMessage("Updated successfully");
         }
+
+
         ViewClient = (Id) => {
             window.location.href = "/Student/ViewClient/" + Id;
 
@@ -107,6 +126,8 @@ module CurdOperationExtension {
 
             })
         }
+
+
 
         
     }

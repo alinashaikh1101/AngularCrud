@@ -41,13 +41,24 @@ var CurdOperationExtension;
                 });
             };
             _this.DeleteClient = function (id) {
-                _this.dataSvc.DeleteClient(id).then(function (data) {
-                    _this.showMessage("Deleted successfully");
-                    console.log(data);
-                    _this.GetClientList();
-                }).catch(function (error) {
-                    console.log(error);
-                }).finally(function () {
+                var confirm = _this.$mdDialog.confirm()
+                    .title('Would you like to delete your client?')
+                    .textContent('')
+                    .ariaLabel('')
+                    .targetEvent(null)
+                    .ok('Please do it!')
+                    .cancel('cancel');
+                _this.$mdDialog.show(confirm).then(function () {
+                    _this.dataSvc.DeleteClient(id).then(function (data) {
+                        _this.showMessage("Deleted successfully");
+                        console.log(data);
+                        //this.DeleteClient(id);
+                        _this.GetClientList();
+                    }).catch(function (error) {
+                        console.log(error);
+                    }).finally(function () {
+                    });
+                }, function () {
                 });
             };
             _this.UpdateClient = function (id) {
@@ -64,6 +75,7 @@ var CurdOperationExtension;
                 });
             };
             _this.$scope = $scope;
+            _this.$mdDialog = $mdDialog;
             // this.firstName = "Alina";
             // this.lastName = "";
             // this.rollNumber = 2;

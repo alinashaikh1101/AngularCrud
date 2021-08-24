@@ -41,7 +41,9 @@ module CurdOperationExtension {
             }).finally(() => {
 
             })
+
         }
+        
     }
     UpdateCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 
