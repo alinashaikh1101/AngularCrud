@@ -61,18 +61,26 @@ var CurdOperationExtension;
                 }, function () {
                 });
             };
-            _this.UpdateClient = function () {
-                _this.dataSvc.UpdateClient(_this.$scope.project).then(function (data) {
-                    _this.showMessage("Updated Sucesfully");
-                    console.log(data);
+            _this.getStudentData = function () {
+                _this.dataSvc.ViewClient(_this.studentId).then(function (data) {
+                    _this.$scope.project = data;
                 }).catch(function (error) {
-                    console.log(error);
                 }).finally(function () {
                 });
             };
+            _this.UpdateClient = function (id) {
+                window.location.href = "/Student/UpdateClient/" + id;
+                //this.dataSvc.UpdateClient(this.$scope.project).then((data) => {
+                //this.showMessage("Updated Sucesfully");
+                //console.log(data);
+                //}).catch((error) => {
+                // console.log(error);
+                //}).finally(() => {
+                //})
+            };
             _this.ViewClient = function (Id) {
                 window.location.href = "/Student/ViewClient/" + Id;
-                _this.dataSvc.ViewClient(id).then(function (data) {
+                _this.dataSvc.ViewClient(Id).then(function (data) {
                     console.log(data);
                 }).catch(function (error) {
                     console.log(error);
@@ -98,6 +106,9 @@ var CurdOperationExtension;
             return _this;
             // this.DeleteClient(id);
         }
+        PathwayCtrl.prototype.studentId = function (studentId) {
+            throw new Error("Method not implemented.");
+        };
         PathwayCtrl.prototype.$onInit = function () {
         };
         PathwayCtrl.prototype.init = function () {
@@ -113,4 +124,4 @@ var CurdOperationExtension;
 function id_(id_) {
     throw new Error("Function not implemented.");
 }
-//# sourceMappingURL=StudentCtrl.js.map
+//# sourceMappingURL=StudentList.js.map

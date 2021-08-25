@@ -44,6 +44,7 @@ var CurdOperationExtension;
                 });
             };
             _this.$scope = $scope;
+            _this.$mdDialog = $mdDialog;
             // this.firstName = "Alina";
             // this.lastName = "";
             // this.rollNumber = 2;

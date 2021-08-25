@@ -8,10 +8,29 @@ var CurdOperationExtension;
             this.httpService = httpService;
             this.qService = qService;
         }
+        StudentDataService.prototype.getInfoByid = function (id) {
+            var self = this;
+            var deferred = self.qService.defer();
+            var apiUrl = "https://localhost:44301/StudentApi/ViewClientById/" + id;
+            ajaxApi({
+                type: 'POST',
+                contentType: -'application/json',
+                url: apiUrl,
+                success: function (response) {
+                    deferred.resolve(response);
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                    Workpulse.Site.AlertJS(xhr);
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        };
         StudentDataService.prototype.postSkill = function (pathway) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44301/Student/InsertClient";
+            var apiUrl = "https://localhost:44301/StudentApi/InsertClient";
             ajaxApi({
                 url: apiUrl,
                 data: JSON.stringify(pathway),
@@ -31,7 +50,7 @@ var CurdOperationExtension;
         StudentDataService.prototype.getPathwayDetail = function () {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44301/student/GetClientList";
+            var apiUrl = "https://localhost:44301/studentApi/getClientList";
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
@@ -49,7 +68,7 @@ var CurdOperationExtension;
         StudentDataService.prototype.DeleteClient = function (id) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44301/student/DeleteClientById/" + id;
+            var apiUrl = "https://localhost:44301/StudentApi/DeleteClient/" + id;
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
@@ -64,12 +83,13 @@ var CurdOperationExtension;
             });
             return deferred.promise;
         };
-        StudentDataService.prototype.UpdateClient = function (id) {
+        StudentDataService.prototype.UpdateClient = function (pathway) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44301/Student/UpdateClientById" + id;
+            var apiUrl = "https://localhost:44301/StudentApi/UpdateClient";
             ajaxApi({
                 type: 'POST',
+                data: JSON.stringify(pathway),
                 contentType: -'application/json',
                 url: apiUrl,
                 success: function (response) {
@@ -86,9 +106,9 @@ var CurdOperationExtension;
         StudentDataService.prototype.ViewClient = function (Id) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44301/Student/ViewClientById/" + Id;
+            var apiUrl = "https://localhost:44301/StudentApi/GetClientById/" + Id;
             ajaxApi({
-                type: 'POST',
+                type: 'GET',
                 contentType: -'application/json',
                 url: apiUrl,
                 success: function (response) {
@@ -108,8 +128,5 @@ var CurdOperationExtension;
         return StudentDataService;
     }());
     CurdOperationExtension.StudentDataService = StudentDataService;
-    function StudentDataServiceFactory($http, IHttpService, $q, IQService) {
-        throw new Error("Function not implemented.");
-    }
 })(CurdOperationExtension || (CurdOperationExtension = {}));
 //# sourceMappingURL=StudentDataService.js.map

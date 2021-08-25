@@ -187,6 +187,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StudentApiController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentUpdateController.cs" />
     <Compile Include="Global.asax.cs">
@@ -216,7 +217,7 @@
     <Compile Include="Models\StudentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Views\Student\StudentClass.cs" />
+    <Compile Include="ViewModel\ClientViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\angular-material.css" />
@@ -236,6 +237,8 @@
     <Content Include="Content\SCSS\StudentStyle.min.css">
       <DependentUpon>StudentStyle.css</DependentUpon>
     </Content>
+    <Content Include="Content\SCSS\UpdateStyle.css" />
+    <Content Include="Content\SCSS\ViewStyle.css" />
     <Content Include="Content\_all-skins.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1113,6 +1116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\StudentApi\" />
     <Folder Include="Views\StudentUpdate\" />
     <Folder Include="Views\Update\" />
   </ItemGroup>
@@ -1131,9 +1135,10 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Ng\BaseController.ts" />
-    <TypeScriptCompile Include="Scripts\Ng\Controller\DeleteCtrl.ts" />
-    <TypeScriptCompile Include="Scripts\Ng\Controller\StudentCtrl.ts" />
+    <TypeScriptCompile Include="Scripts\Ng\Controller\ListCtrl.ts" />
+    <TypeScriptCompile Include="Scripts\Ng\Controller\StudentList.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Controller\UpdateCtrl.ts" />
+    <TypeScriptCompile Include="Scripts\Ng\Controller\ViewCtrl.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Model\StudentModel.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Service\StudentDataService.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Site.ts" />

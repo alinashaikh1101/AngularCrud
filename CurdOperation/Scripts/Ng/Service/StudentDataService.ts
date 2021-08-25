@@ -7,6 +7,25 @@ module CurdOperationExtension {
 
 
     export class StudentDataService {
+        getInfoByid(id: any): ng.IPromise<IStudentModel> {
+            var self = this;
+            var deferred = self.qService.defer<IStudentModel>();
+            var apiUrl = "https://localhost:44301/StudentApi/ViewClientById/" + id;
+            ajaxApi({
+                type: 'POST',
+                contentType: -'application/json',
+                url: apiUrl,
+                success: (response: IStudentModel) => {
+                    deferred.resolve(response);
+                },
+                error: (xhr) => {
+                    console.log(xhr)
+                    Workpulse.Site.AlertJS(xhr)
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        }
 
         constructor(private httpService: ng.IHttpService, private qService: ng.IQService) {
         }
@@ -16,7 +35,7 @@ module CurdOperationExtension {
         postSkill(pathway: IStudentModel): ng.IPromise<IStudentModel> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44301/Student/InsertClient";
+            var apiUrl = "https://localhost:44301/StudentApi/InsertClient";
             ajaxApi({
                 url: apiUrl,
                 data: JSON.stringify(pathway),
@@ -33,10 +52,11 @@ module CurdOperationExtension {
             });
             return deferred.promise;
         }
+
         getPathwayDetail(): ng.IPromise<IStudentModel[]> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel[]>();
-            var apiUrl = "https://localhost:44301/student/GetClientList";
+            var apiUrl = "https://localhost:44301/studentApi/getClientList";
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
@@ -55,7 +75,7 @@ module CurdOperationExtension {
         DeleteClient(id): ng.IPromise<IStudentModel> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44301/student/DeleteClientById/"+id;
+            var apiUrl = "https://localhost:44301/StudentApi/DeleteClient/" + id;
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
@@ -70,31 +90,13 @@ module CurdOperationExtension {
             });
             return deferred.promise;
         }
-        UpdateClient(id): ng.IPromise<IStudentModel> {
+        UpdateClient(pathway: IStudentModel): ng.IPromise<IStudentModel> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44301/Student/UpdateClientById" + id;
+            var apiUrl = "https://localhost:44301/StudentApi/UpdateClient";
             ajaxApi({
                 type: 'POST',
-                contentType:-'application/json',
-                url: apiUrl,
-                success: (response: IStudentModel) => {
-                    deferred.resolve(response);
-                },
-                error: (xhr) => {
-                    console.log(xhr)
-                    Workpulse.Site.AlertJS(xhr)
-                    deferred.reject(xhr);
-                }
-            });
-            return deferred.promise;
-        }
-        ViewClient(Id): ng.IPromise<IStudentModel> {
-            var self = this;
-            var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44301/Student/ViewClientById/" + Id;
-            ajaxApi({
-                type: 'POST',
+                data: JSON.stringify(pathway),
                 contentType: -'application/json',
                 url: apiUrl,
                 success: (response: IStudentModel) => {
@@ -109,7 +111,29 @@ module CurdOperationExtension {
             return deferred.promise;
         }
 
-        
+
+        ViewClient(Id): ng.IPromise<IStudentModel> {
+            var self = this;
+            var deferred = self.qService.defer<IStudentModel>();
+            var apiUrl = "https://localhost:44301/StudentApi/GetClientById/" + Id;
+            ajaxApi({
+                type: 'GET',
+                contentType: -'application/json',
+                url: apiUrl,
+                success: (response: IStudentModel) => {
+                    deferred.resolve(response);
+                },
+                error: (xhr) => {
+                    console.log(xhr)
+                    Workpulse.Site.AlertJS(xhr)
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        }
+
+
+
 
 
 
@@ -121,7 +145,5 @@ module CurdOperationExtension {
     }
 
 
-    function StudentDataServiceFactory($http: any, IHttpService: any, $q: any, IQService: any) {
-        throw new Error("Function not implemented.");
-    }
+
 }

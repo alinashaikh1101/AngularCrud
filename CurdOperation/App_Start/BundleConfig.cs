@@ -24,43 +24,56 @@ namespace CurdOperation
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/angular-material.css"
+                      ));
 
 
-            bundles.Add(new ScriptBundle("~/bundles/common").Include(
-                  "~/Scripts/Ng/Site.js",
-                  "~/Scripts/Ng/BaseController.js"));
+            bundles.Add(new ScriptBundle("~/bundles/Common").Include(
+                      "~/Scripts/NG/Site.js",
+                      "~/Scripts/NG/BaseController.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                    "~/Scripts/Angular.js",
-                    "~/Scripts/angular-aria.js",
-                    "~/Scripts/angular-messages.js",
-                    "~/Scripts/angular-animate.js",
-                    "~/Scripts/angular-sanitize.js",
-                    "~/Scripts/angular-touch.js",
-                      "~/Scripts/angular-animate.js",
-                   "~/Scripts/angular-material.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/Angular").Include(
+                      "~/Scripts/Angular.js",
+                      "~/Scripts/Angular-aria.js",
+                      "~/Scripts/Angular-messages.js",
+                      "~/Scripts/Angular-sanitize.js",
+                      "~/Scripts/Angular-animate.js",
+                      "~/Scripts/Angular-touch.js",
+                      "~/Scripts/Angular-material.js"));
 
             bundles.Add(new StyleBundle("~/Content/Student").Include(
-                      "~/Content/SCSS/StudentStyle.css"));
-           
-            bundles.Add(new StyleBundle("~/Content/StudentUpdate").Include(
-                      "~/Content/SCSS/StudentStyle.css",
-                        "~/Content/angular-material.css"));
+                     "~/Content/SCSS/StudentStyle.css"));
+                                          
+
+            bundles.Add(new StyleBundle("~/Content/View").Include(
+                     "~/Content/SCSS/ViewStyle.css"));
+
+                     
+
+            bundles.Add(new StyleBundle("~/Content/Update").Include(
+                     "~/Content/SCSS/UpdateStyle.css"));
+                                          
+
+            bundles.Add(new ScriptBundle("~/bundles/Student").Include(
+                     "~/Scripts/Ng/Service/StudentDataService.js",
+                     "~/Scripts/Ng/Controller/StudentCtrl.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/StudentList").Include(
+                  "~/Scripts/Ng/Service/StudentDataService.js",
+                  "~/Scripts/Ng/Controller/ListCtrl.js"));
+         
+
+            bundles.Add(new ScriptBundle("~/bundles/ViewClient").Include(
+                     "~/Scripts/Ng/Service/StudentDataService.js",
+                     "~/Scripts/Ng/Controller/ViewCtrl.js"));
 
 
-            bundles.Add(new StyleBundle("~/Content/AngularMaterial").Include(
-                      "~/Content/angular-material.css"));   
+            bundles.Add(new ScriptBundle("~/bundles/UpdateClient").Include(
+                     "~/Scripts/Ng/Service/StudentDataService.js",
+                     "~/Scripts/Ng/Controller/UpdateCtrl.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/student").Include(
-                       "~/Scripts/Ng/Service/StudentDataService.js",
-                      "~/Scripts/Ng/Controller/StudentCtrl.js"));
-          
-            bundles.Add(new ScriptBundle("~/bundles/StudentUpdate").Include(
-                       "~/Scripts/Ng/Service/StudentDataService.js",
-                      "~/Scripts/Ng/Controller/UpdateCtrl.js"));
-
-            BundleTable.EnableOptimizations = false;
+             BundleTable.EnableOptimizations = false;
         }
     }
 }

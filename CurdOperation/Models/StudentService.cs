@@ -1,4 +1,5 @@
-﻿using CurdOperation.Views.Student;
+﻿using CurdOperation.ViewModel;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace CurdOperation.Models
         {
         }
 
-        public int AddClient(StudentDto model)
+        public int AddClient(ClientViewModel model)
         {
             Client Client = new Client()
             {
@@ -37,9 +38,40 @@ namespace CurdOperation.Models
 
             return db.SaveChanges();
         }
+        public int InsertClient(ClientViewModel model)
+        {
+            Client Client = new Client()
+            {
+                Id = model.Id,
+                ClientName = model.ClientName,
+                ProjectType = model.ProjectType,
+                Description = model.Description,
+                ClientEmail = model.ClientEmail,
+                HourlyRate = model.HourlyRate,
+            };
 
+            db.Clients.Add(Client);
 
-        public int UpdateClient(StudentDto model)
+            return db.SaveChanges();
+        }
+        
+        public int GetClientById(ClientViewModel model)
+        {
+            Client Client = new Client()
+            {
+                Id = model.Id,
+                ClientName = model.ClientName,
+                ProjectType = model.ProjectType,
+                Description = model.Description,
+                ClientEmail = model.ClientEmail,
+                HourlyRate = model.HourlyRate,
+            };
+
+            db.Clients.Add(Client);
+
+            return db.SaveChanges();
+        }
+        public int UpdateClient(ClientViewModel model)
         {
             var client = db.Clients.Where(s => s.Id == model.Id).FirstOrDefault();
             if (client != null)
@@ -60,13 +92,13 @@ namespace CurdOperation.Models
             }
         }
 
-        public List<StudentDto> GetClientList()
+        public List<ClientViewModel> GetClientList()
         {
             var client = db.Clients.ToList();
-            List<StudentDto> vm = new List<StudentDto>();
+            List<ClientViewModel> vm = new List<ClientViewModel>();
             foreach (var clients in client)
             {
-                StudentDto studentview = new StudentDto()
+                ClientViewModel studentview = new ClientViewModel()
                 {
                     ClientEmail = clients.ClientEmail,
                     ClientName = clients.ClientName,
@@ -80,13 +112,13 @@ namespace CurdOperation.Models
             return vm;
 
         }
-        public StudentDto GetClientList(int id)
+        public ClientViewModel GetClientList(int id)
 
         {
             var client = db.Clients.Where(s => s.Id == id).FirstOrDefault();
             if (client != null)
             {
-                StudentDto studentview = new StudentDto()
+                ClientViewModel studentview = new ClientViewModel()
                 {
                     ClientEmail = client.ClientEmail,
                     ClientName = client.ClientName,

@@ -17,28 +17,33 @@ var __extends = (this && this.__extends) || (function () {
 /// <reference path="../../typings/jQuery/jquery.d.ts" />
 var CurdOperationExtension;
 (function (CurdOperationExtension) {
-    var PathwayCtrl = /** @class */ (function (_super) {
-        __extends(PathwayCtrl, _super);
-        function PathwayCtrl($scope, dataSvc, $timeout, $mdDialog, $mdSelect, $mdToast) {
+    var ListCtrl = /** @class */ (function (_super) {
+        __extends(ListCtrl, _super);
+        function ListCtrl($scope, dataSvc, $timeout, $mdDialog, $mdSelect, $mdToast) {
             var _this = _super.call(this, $scope, $mdToast) || this;
             _this.dataSvc = dataSvc;
-            _this.insertClient = function () {
-                console.log(_this.$scope.project);
-                _this.dataSvc.postSkill(_this.$scope.project).then(function (data) {
+            _this.getClientList = function () {
+                _this.dataSvc.getPathwayDetail().then(function (data) {
+                    _this.clientList = data;
                     console.log(data);
                 }).catch(function (error) {
                     console.log(error);
                 }).finally(function () {
                 });
             };
-            _this.GetClientList = function () {
-                _this.dataSvc.getPathwayDetail().then(function (data) {
-                    _this.studentList = data;
+            /*ViewClient = (id) => {
+                this.ShowInfo(id);
+                console.log(id);
+                this.dataSvc.getInfoByid(id).then((data) => {
                     console.log(data);
-                }).catch(function (error) {
+                }).catch((error) => {
                     console.log(error);
-                }).finally(function () {
-                });
+                }).finally(() => {
+    
+                })
+            }*/
+            _this.UpdateClient = function (id) {
+                window.location.href = "/Student/Update?ClientId=" + id;
             };
             _this.DeleteClient = function (id) {
                 var confirm = _this.$mdDialog.confirm()
@@ -53,64 +58,32 @@ var CurdOperationExtension;
                         _this.showMessage("Deleted successfully");
                         console.log(data);
                         //this.DeleteClient(id);
-                        _this.GetClientList();
+                        _this.getClientList();
                     }).catch(function (error) {
                         console.log(error);
                     }).finally(function () {
                     });
                 }, function () {
                 });
-            };
-            _this.UpdateClient = function () {
-                _this.dataSvc.UpdateClient(_this.$scope.project).then(function (data) {
-                    _this.showMessage("Updated Sucesfully");
-                    console.log(data);
-                }).catch(function (error) {
-                    console.log(error);
-                }).finally(function () {
-                });
-            };
-            _this.ViewClient = function (Id) {
-                window.location.href = "/Student/ViewClient/" + Id;
-                _this.dataSvc.ViewClient(id).then(function (data) {
-                    console.log(data);
-                }).catch(function (error) {
-                    console.log(error);
-                }).finally(function () {
-                });
+                var ShowInfo = function (id) {
+                    window.location.href = "/Student/Update?ClientId=" + id;
+                };
             };
             _this.$scope = $scope;
             _this.$mdDialog = $mdDialog;
-            // this.firstName = "Alina";
-            // this.lastName = "";
-            // this.rollNumber = 2;
-            //  this.$scope.firstName = "alina";
-            //   this.myDate = new Date();
-            $scope.GetAllData = {};
-            $scope.project = {
-                description: 'NUCLEAR',
-                clientEmail: '',
-                clientName: '',
-                projectType: '',
-                hourlyRate: 800
-            };
-            _this.GetClientList();
+            _this.getClientList();
             return _this;
-            // this.DeleteClient(id);
         }
-        PathwayCtrl.prototype.$onInit = function () {
+        ListCtrl.prototype.$onInit = function () {
         };
-        PathwayCtrl.prototype.init = function () {
+        ListCtrl.prototype.init = function () {
         };
-        return PathwayCtrl;
+        return ListCtrl;
     }(wp.angularBase.BaseCtrl));
-    CurdOperationExtension.PathwayCtrl = PathwayCtrl;
-    PathwayCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
+    CurdOperationExtension.ListCtrl = ListCtrl;
+    ListCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
     var app = angular.module("studentApp", ['ngMaterial', 'ngMessages', 'ngSanitize']);
     app.factory('StudentDataService', ['$http', '$q', CurdOperationExtension.StudentDataService.StudentDataServiceFactory]);
-    app.controller('PathwayCtrl', PathwayCtrl);
+    app.controller('ListCtrl', ListCtrl);
 })(CurdOperationExtension || (CurdOperationExtension = {}));
-function id_(id_) {
-    throw new Error("Function not implemented.");
-}
-//# sourceMappingURL=StudentCtrl.js.map
+//# sourceMappingURL=ListCtrl.js.map

@@ -62,13 +62,14 @@ var CurdOperationExtension;
                 });
             };
             _this.UpdateClient = function () {
-                _this.dataSvc.UpdateClient(_this.$scope.project).then(function (data) {
-                    _this.showMessage("Updated Sucesfully");
-                    console.log(data);
-                }).catch(function (error) {
-                    console.log(error);
-                }).finally(function () {
-                });
+                window.location.href = "/Student/UpdateClient/" + id;
+                //this.dataSvc.UpdateClient(this.$scope.project).then((data) => {
+                //this.showMessage("Updated Sucesfully");
+                //console.log(data);
+                //}).catch((error) => {
+                // console.log(error);
+                //}).finally(() => {
+                //})
             };
             _this.ViewClient = function (Id) {
                 window.location.href = "/Student/ViewClient/" + Id;
@@ -113,4 +114,4 @@ var CurdOperationExtension;
 function id_(id_) {
     throw new Error("Function not implemented.");
 }
-//# sourceMappingURL=StudentCtrl.js.map
+//# sourceMappingURL=StudentListctrl.js.map

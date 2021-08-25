@@ -4,12 +4,12 @@
 }
 @section HeadContent {
     @Styles.Render("~/Content/Student")
-    @Styles.Render("~/Content/AngularMaterial")
+    @Styles.Render("~/Content/css")
 
 }
 <h2>List</h2>
 
-<div ng-app="studentApp" ng-controller="PathwayCtrl as vm">
+<div ng-app="studentApp" ng-controller="ListCtrl as vm">
     <table class="table">
         <tr>
             <th>Id</th>
@@ -20,7 +20,7 @@
             <th>ProjectType</th>
         </tr>
 
-        <tr ng-repeat="data in vm.studentList">
+        <tr ng-repeat="data in vm.clientList">
 
             <td>{{data.Id}}</td>
             <td>{{data.ClientName}}</td>
@@ -47,5 +47,5 @@
 @section scripts{
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/common")
-    @Scripts.Render("~/bundles/student")
+    @Scripts.Render("~/bundles/studentList")
 }

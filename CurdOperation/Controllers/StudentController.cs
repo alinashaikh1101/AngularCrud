@@ -1,5 +1,5 @@
 ﻿using CurdOperation.Models;
-using CurdOperation.Views.Student;
+using CurdOperation.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,68 +17,51 @@ namespace CurdOperation.Controllers
         StudentService service = new StudentService();
 
 
-        public ActionResult Index(StudentDto model)
+        public ActionResult Index()
         {
 
             return View();
         }
-        //public ActionResult Edit()
-        //{
-            //return View();
-        //}
+        public ActionResult Edit(int ClientId)
+        {
+            ViewBag.Id = ClientId;
+            return View();
+        }
+        
+        
+        public ActionResult Delete(int Id)
+        {
+          return View();
+        }
+        
         public ActionResult List()
         {
-
-            return View();
-        }
-        public ActionResult Update(int id)
-        {
-            ViewBag.Id = id;
-
-            return View();
-
-            
-        }
-        public ActionResult DeleteClient()
-        {
-
-            return View();
-        }
-
-        public ActionResult ViewClient(int Id)
-        {
-           ViewBag.Id = Id;
-
            return View();
         }
 
-
-        public JsonResult InsertClient(StudentDto model)
+        public ActionResult ViewClient(int ClientId)
         {
-            var result = service.AddClient(model);
-            return Json(result, JsonRequestBehavior.AllowGet);
+            ViewBag.Id = ClientId;
+            return View();
         }
-         public JsonResult UpdateClientById(StudentDto model)
+        public ActionResult Update(int ClientId)
         {
-            int result = service.UpdateClient(model);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult GetClientList()
-        {
-            var result = service.GetClientList();
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult DeleteClientById(int id)
-        {
-        var result = service.DeleteClient(id);
-        return Json(result, JsonRequestBehavior.AllowGet);
+            ViewBag.Id = ClientId;
+            return View();
         }
 
-        public JsonResult ViewClientById(int Id)
+        public ActionResult UpdateClient(int ClientId)
         {
-            var result = service.GetClientList(Id);
-            return Json(result, JsonRequestBehavior.AllowGet);
+            ViewBag.Id = ClientId;
+            return View();
         }
+        public ActionResult DeleteClient(int Id)
+        {
+            
+            return View();
+        }
+
+
     }
 }
 

@@ -29,8 +29,19 @@ var CurdOperationExtension;
                 }).finally(function () {
                 });
             };
+            _this.UpdateClient = function () {
+                console.log(_this.$scope.project);
+                _this.dataSvc.UpdateClient(_this.$scope.project).then(function (data) {
+                    _this.showMessage("updated sucesfully");
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
             _this.$scope = $scope;
             _this.studentId = Number($("#hdnId").val());
+            console.log(_this.studentId);
             _this.getStudentData();
             return _this;
         }
@@ -46,7 +57,4 @@ var CurdOperationExtension;
     app.factory('StudentDataService', ['$http', '$q', CurdOperationExtension.StudentDataService.StudentDataServiceFactory]);
     app.controller('UpdateCtrl', UpdateCtrl);
 })(CurdOperationExtension || (CurdOperationExtension = {}));
-function _id(id) {
-    throw new Error("Function not implemented.");
-}
 //# sourceMappingURL=UpdateCtrl.js.map

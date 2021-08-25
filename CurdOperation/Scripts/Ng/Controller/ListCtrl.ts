@@ -2,19 +2,35 @@
 /// <reference path="../../typings/jQuery/jquery.d.ts" />
 module CurdOperationExtension {
     export interface IPathwayScope extends ng.IScope {
-
-
         loading: boolean;
         loadingTask: boolean;
+        Description: String;
+        ClientName: String;
+        ClientEmail: String;
+        ProjectType: String;
+        HourlyRate: string;
+        
+        
 
         project: IStudentModel
 
     }
-    export class PathwayCtrl extends wp.angularBase.BaseCtrl implements angular.IController {
+    export class ListCtrl extends wp.angularBase.BaseCtrl implements angular.IController {
         // firstName: String;
         // lastName: String;
         // rollNumber: Number;
         // myDate: any;
+        ClientId: number;
+        Description: String;
+        ClientName: String;
+        ClientEmail: String;
+        ProjectType: String;
+        HourlyRate: String;
+
+
+
+        infoId: number;
+        project: IStudentModel;
 
         $scope: CurdOperationExtension.IPathwayScope;
         private $mdDialog: any;
@@ -23,27 +39,7 @@ module CurdOperationExtension {
             super($scope, $mdToast);
             this.$scope = $scope;
             this.$mdDialog = $mdDialog;
-
-            // this.firstName = "Alina";
-            // this.lastName = "";
-            // this.rollNumber = 2;
-            //  this.$scope.firstName = "alina";
-            //   this.myDate = new Date();
-            $scope.GetAllData = {
-
-            }
-            $scope.project = {
-                description: 'NUCLEAR',
-                clientEmail: '',
-                clientName: '',
-                projectType: '',
-                hourlyRate: 800
-            };
-
-            this.GetClientList();
-
-            // this.DeleteClient(id);
-
+            this.getClientList();
         }
 
         $onInit() {
@@ -52,34 +48,38 @@ module CurdOperationExtension {
         private init(): void {
         }
 
-        insertClient = () => {
-            console.log(this.$scope.project);
-            this.dataSvc.postSkill(this.$scope.project).then((data) => {
-                console.log(data);
-            }).catch((error) => {
-                console.log(error);
-            }).finally(() => {
-
-            })
-        }
-
-        studentList: IStudentModel[];
-        GetClientList = () => {
+        clientList: IStudentModel[];
+        getClientList = () => {
             this.dataSvc.getPathwayDetail().then((data) => {
-                this.studentList = data;
+                this.clientList = data;
                 console.log(data);
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {
 
+            })
+        }
 
+        /*ViewClient = (id) => {
+            this.ShowInfo(id);
+            console.log(id);
+            this.dataSvc.getInfoByid(id).then((data) => {
+                console.log(data);
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
 
             })
+        }*/
 
-
+        UpdateClient = (id) => {
+            window.location.href = "/Student/Update?ClientId=" + id;
         }
-        DeleteClient = (id) => {
 
+
+
+
+        DeleteClient = (id) => {
             var confirm = this.$mdDialog.confirm()
                 .title('Would you like to delete your client?')
                 .textContent('')
@@ -87,58 +87,36 @@ module CurdOperationExtension {
                 .targetEvent(null)
                 .ok('Please do it!')
                 .cancel('cancel');
-
-           this. $mdDialog.show(confirm).then( () =>{
+            this.$mdDialog.show(confirm).then(() => {
                 this.dataSvc.DeleteClient(id).then((data) => {
                     this.showMessage("Deleted successfully");
                     console.log(data);
-                   
+
                     //this.DeleteClient(id);
-                    this.GetClientList();
-                    
+                    this.getClientList();
+
                 }).catch((error) => {
                     console.log(error);
                 }).finally(() => {
 
+
+
                 })
-            },  () =>{
+            }, () => {
             });
 
+            const ShowInfo = (id: number) => {
+                window.location.href = "/Student/Update?ClientId=" + id;
+            }
 
-            
+
+
+
         }
-
-        UpdateClient = (id) => {
-            window.location.href = "/Student/Update/" + id;
-            this.showMessage("Updated successfully");
-        }
-
-
-        ViewClient = (Id) => {
-            window.location.href = "/Student/ViewClient/" + Id;
-
-            this.dataSvc.ViewClient(id).then((data) => {
-                console.log(data);
-
-            }).catch((error) => {
-                console.log(error);
-            }).finally(() => {
-
-            })
-        }
-
-
-
-        
     }
-
-    PathwayCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
+    ListCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 
     var app = angular.module("studentApp", ['ngMaterial', 'ngMessages', 'ngSanitize']);
     app.factory('StudentDataService', ['$http', '$q', StudentDataService.StudentDataServiceFactory]);
-    app.controller('PathwayCtrl', PathwayCtrl);
-}
-
-function id_(id_: any) {
-    throw new Error("Function not implemented.");
+    app.controller('ListCtrl', ListCtrl);
 }

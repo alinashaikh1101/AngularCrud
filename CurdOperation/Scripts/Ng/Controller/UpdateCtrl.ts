@@ -24,6 +24,7 @@ module CurdOperationExtension {
             super($scope, $mdToast);
             this.$scope = $scope;
             this.studentId = Number($("#hdnId").val());
+            console.log(this.studentId);
             this.getStudentData();
         }
 
@@ -43,6 +44,19 @@ module CurdOperationExtension {
             })
 
         }
+        UpdateClient = () => {
+            console.log(this.$scope.project)
+            this.dataSvc.UpdateClient(this.$scope.project).then((data) => {
+                this.showMessage("updated sucesfully");
+                console.log(data);
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+
+
+
+            })
+        }
         
     }
     UpdateCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
@@ -52,7 +66,4 @@ module CurdOperationExtension {
     app.controller('UpdateCtrl', UpdateCtrl);
 }
 
-function _id(id: any) {
-    throw new Error("Function not implemented.");
-}
 

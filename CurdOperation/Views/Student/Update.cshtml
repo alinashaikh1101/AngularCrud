@@ -2,8 +2,8 @@
     ViewBag.Title = "Update";
 }
 @section HeadContent {
-    @Styles.Render("~/Content/StudentUpdate")
-    @Styles.Render("~/Content/AngularMaterial")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Student")
 
 }
 
@@ -107,8 +107,8 @@
                 </div>
             </md-input-container>
             <div>
-                <md-button class="md-raised md-primary" ng-click="vm.UpdateClient(data.Id)" type="submit">Update</md-button>
-                
+                <md-button class="md-raised md-primary" ng-click="vm.UpdateClient()" type="submit">Update</md-button>
+
             </div>
 
             <p style="font-size:.8em; width: 100%; text-align: center;">
@@ -121,5 +121,5 @@
 @section scripts{
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/common")
-    @Scripts.Render("~/bundles/StudentUpdate")
+    @Scripts.Render("~/bundles/UpdateClient")
 }
