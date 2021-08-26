@@ -4,6 +4,7 @@ module CurdOperationExtension {
     export interface IPathwayScope extends ng.IScope {
         loading: boolean;
         loadingTask: boolean;
+        Id: number;
         Description: String;
         ClientName: String;
         ClientEmail: String;
@@ -21,6 +22,7 @@ module CurdOperationExtension {
         // rollNumber: Number;
         // myDate: any;
 
+        Id: number;
         Description: String;
         ClientName: String;
         ClientEmail: String;

@@ -1113,6 +1113,7 @@
     <Content Include="Views\Student\List.cshtml" />
     <Content Include="Views\Student\Update.cshtml" />
     <Content Include="Views\Student\ViewClient.cshtml" />
+    <Content Include="Views\Student\ListDataGrid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1136,6 +1137,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Ng\BaseController.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Controller\ListCtrl.ts" />
+    <TypeScriptCompile Include="Scripts\Ng\Controller\ListDataCtrl.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Controller\StudentList.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Controller\UpdateCtrl.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Controller\ViewCtrl.ts" />
@@ -1150,6 +1152,7 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-route.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\devexpress-web\devexpress-web.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
   </ItemGroup>

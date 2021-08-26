@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "ListDataGrid";
+}
+@section HeadContent {
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Student")
+
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/21.1.5/css/dx.common.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/21.1.5/css/dx.light.css" />
+    <script src="https://cdn3.devexpress.com/jslib/21.1.5/js/dx.all.js"></script>
+}
+<br />
+<br />
+
+<h2>ListDataGrid</h2>
+
+<div ng-app="studentApp">
+    <div class="demo-container" ng-controller="ListDataCtrl">
+        <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
+    </div>
+</div>
+
+
+
+    @section scripts{
+        @Scripts.Render("~/bundles/Angular")
+        @Scripts.Render("~/bundles/Common")
+        @Scripts.Render("~/bundles/ListDataGrid")
+    }
+

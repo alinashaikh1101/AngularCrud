@@ -13,7 +13,9 @@ namespace CurdOperation.ViewModel
         public string ProjectType { get; set; }
         public string ClientEmail { get; set; }
         public int  HourlyRate { get; set; }
-       
+        public bool tos { get; set; }
+
+        public bool special { get; set; }
       
     }
 }

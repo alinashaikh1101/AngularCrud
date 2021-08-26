@@ -105,14 +105,15 @@ module CurdOperationExtension {
             }, () => {
             });
 
-            const ShowInfo = (id: number) => {
-                window.location.href = "/Student/Update?ClientId=" + id;
-            }
-
+            
 
 
 
         }
+        ShowInfo = (id: number) => {
+            window.location.href = "/Student/Update?ClientId=" + id;
+        }
+
     }
     ListCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 

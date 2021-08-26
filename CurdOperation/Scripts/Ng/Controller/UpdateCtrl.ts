@@ -7,6 +7,13 @@ module CurdOperationExtension {
         loading: boolean;
         loadingTask: boolean;
 
+        Id: number;
+        Description: String;
+        ClientName: String;
+        ClientEmail: String;
+        ProjectType: String;
+        HourlyRate: string;
+        
         project: IStudentModel
 
     }
@@ -15,6 +22,13 @@ module CurdOperationExtension {
         // lastName: String;
         // rollNumber: Number;
         // myDate: any;
+        Id: number;
+        Description: String;
+        ClientName: String;
+        ClientEmail: String;
+        ProjectType: String;
+        HourlyRate: number;
+                      
 
         $scope: CurdOperationExtension.IPathwayScope;
         private $mdDialog: any;

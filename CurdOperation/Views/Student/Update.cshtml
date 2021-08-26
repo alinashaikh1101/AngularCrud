@@ -18,8 +18,8 @@
 
             <md-input-container class="md-block">
                 <label>Description</label>
-                <input md-maxlength="30" required md-no-asterisk name="description" ng-model="project.Description">
-                <div ng-messages="projectForm.description.$error">
+                <input md-maxlength="30" required md-no-asterisk name="Description" ng-model="project.Description">
+                <div ng-messages="projectForm.Description.$error">
                     <div ng-message="required">This is required.</div>
                     <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
                 </div>
@@ -28,8 +28,8 @@
             <div layout="row">
                 <md-input-container flex="50">
                     <label>Client Name</label>
-                    <input required name="clientName" ng-model="project.ClientName">
-                    <div ng-messages="projectForm.clientName.$error">
+                    <input required name="ClientName" ng-model="project.ClientName">
+                    <div ng-messages="projectForm.ClientName.$error">
                         <div ng-message="required">This is required.</div>
                     </div>
                 </md-input-container>
@@ -40,7 +40,7 @@
                         <md-option value="app">Application</md-option>
                         <md-option value="web">Website</md-option>
                     </md-select>
-                    <div ng-messages="projectForm.type.$error">
+                    <div ng-messages="projectForm.ProjectType.$error">
                         <div ng-message="required">This is required.</div>
                     </div>
                 </md-input-container>
@@ -48,10 +48,10 @@
 
             <md-input-container class="md-block">
                 <label>Client Email</label>
-                <input required type="email" name="clientEmail" ng-model="project.ClientEmail"
+                <input required type="email" name="ClientEmail" ng-model="project.ClientEmail"
                        minlength="10" maxlength="100" @*ng-pattern='/^.+@.+\..+$/'*@ />
 
-                <div ng-messages="projectForm.clientEmail.$error" role="alert">
+                <div ng-messages="projectForm.ClientEmail.$error" role="alert">
                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
                         Your email must be between 10 and 100 characters long and look like an e-mail address.
                     </div>
@@ -60,10 +60,10 @@
 
             <md-input-container class="md-block">
                 <label>Hourly Rate (USD)</label>
-                <input required type="number" step="any" name="rate" ng-model="project.HourlyRate" min="800"
+                <input required type="number" step="any" name="HourlyRate" ng-model="project.HourlyRate" min="800"
                        max="4999" ng-pattern="/^1234$/" />
 
-                <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                <div ng-messages="projectForm.HourlyRate.$error" multiple md-auto-hide="false">
                     <div ng-message="required">
                         You've got to charge something! You can't just <b>give away</b> a Missile Defense
                         System.

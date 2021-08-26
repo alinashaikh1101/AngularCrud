@@ -60,6 +60,10 @@ namespace CurdOperation.Controllers
             
             return View();
         }
+        public ActionResult ListDataGrid()
+        {
+            return View();
+        }
 
 
     }

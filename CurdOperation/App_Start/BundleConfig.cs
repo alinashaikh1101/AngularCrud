@@ -73,7 +73,11 @@ namespace CurdOperation
                      "~/Scripts/Ng/Service/StudentDataService.js",
                      "~/Scripts/Ng/Controller/UpdateCtrl.js"));
 
-             BundleTable.EnableOptimizations = false;
+            bundles.Add(new ScriptBundle("~/bundles/ListDataGrid").Include(
+                     "~/Scripts/Ng/Service/StudentDataService.js",
+                     "~/Scripts/Ng/Controller/ListDataCtrl.js"));
+
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

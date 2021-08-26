@@ -65,9 +65,9 @@ var CurdOperationExtension;
                     });
                 }, function () {
                 });
-                var ShowInfo = function (id) {
-                    window.location.href = "/Student/Update?ClientId=" + id;
-                };
+            };
+            _this.ShowInfo = function (id) {
+                window.location.href = "/Student/Update?ClientId=" + id;
             };
             _this.$scope = $scope;
             _this.$mdDialog = $mdDialog;
