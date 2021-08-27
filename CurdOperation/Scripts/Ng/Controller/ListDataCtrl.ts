@@ -104,7 +104,7 @@ module CurdOperationExtension {
             //console.log(this.$scope.project)
             this.ShowInfo(ClientId);
             this.dataSvc.UpdateClient(ClientId).then((data) => {
-                //this.showMessage("updated sucesfully");
+                this.showMessage("updated sucesfully");
                 console.log(data);
             }).catch((error) => {
                 console.log(error);
@@ -120,7 +120,7 @@ module CurdOperationExtension {
                 .textContent('')
                 .ariaLabel('')
                 .targetEvent(null)
-                .ok('Please do it!')
+                .ok('Yes')
                 .cancel('cancel');
             this.$mdDialog.show(confirm).then(() => {
                 this.dataSvc.DeleteClient(id).then((data) => {

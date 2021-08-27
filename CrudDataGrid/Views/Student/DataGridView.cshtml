@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "DataGridView";
+}
+
+@section HeadContent {
+    @Styles.Render("~/Content/Student")
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/21.1.5/css/dx.common.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/21.1.5/css/dx.light.css" />
+    <script src="https://cdn3.devexpress.com/jslib/21.1.5/js/dx.all.js"></script>
+}
+<br />
+<br />
+<br />
+<h2>GridView</h2>
+
+
+<div ng-app="studentApp">
+    <div ng-controller="GridCtrl">
+
+        <div class="demo-container">
+            <div id="buttonContainer"></div>
+
+
+
+            <div id="gridContainer"></div>
+
+        </div>
+        @section scripts{
+            @Scripts.Render("~/bundles/Angular")
+            @Scripts.Render("~/bundles/Common")
+            @Scripts.Render("~/bundles/DataGridView")
+        }
+
+    </div>
+
+</div>

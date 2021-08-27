@@ -84,7 +84,7 @@ var CurdOperationExtension;
                 //console.log(this.$scope.project)
                 _this.ShowInfo(ClientId);
                 _this.dataSvc.UpdateClient(ClientId).then(function (data) {
-                    //this.showMessage("updated sucesfully");
+                    _this.showMessage("updated sucesfully");
                     console.log(data);
                 }).catch(function (error) {
                     console.log(error);
@@ -97,7 +97,7 @@ var CurdOperationExtension;
                     .textContent('')
                     .ariaLabel('')
                     .targetEvent(null)
-                    .ok('Please do it!')
+                    .ok('Yes')
                     .cancel('cancel');
                 _this.$mdDialog.show(confirm).then(function () {
                     _this.dataSvc.DeleteClient(id).then(function (data) {

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularCrud", "AngularCrud\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurdOperation", "CurdOperation\CurdOperation.csproj", "{625D0796-DF18-449D-BA07-1F7F78B2E5C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudDataGrid", "CrudDataGrid\CrudDataGrid.csproj", "{D2F97AA8-A128-4407-AD18-EE491D77CD25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{625D0796-DF18-449D-BA07-1F7F78B2E5C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{625D0796-DF18-449D-BA07-1F7F78B2E5C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{625D0796-DF18-449D-BA07-1F7F78B2E5C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2F97AA8-A128-4407-AD18-EE491D77CD25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2F97AA8-A128-4407-AD18-EE491D77CD25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2F97AA8-A128-4407-AD18-EE491D77CD25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2F97AA8-A128-4407-AD18-EE491D77CD25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
