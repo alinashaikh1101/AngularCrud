@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "AllClient";
+    ViewBag.Title = "DataList";
 }
 @section HeadContent {
     @Styles.Render("~/Content/Student")
@@ -8,7 +8,7 @@
 <br />
 <br />
 <br />
-@Html.ActionLink("Add New Client", "Index")
+
 
 <div ng-app="studentApp" ng-controller="ListCtrl as Vm" ng-cloak>
     <div>
@@ -68,6 +68,8 @@
 
 
 
+
+    @Html.ActionLink("Add Client", "Index")
 
 
     @section scripts{

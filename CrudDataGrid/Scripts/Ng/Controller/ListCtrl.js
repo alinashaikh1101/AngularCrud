@@ -23,7 +23,7 @@ var CrudDataGridExtension;
             var _this = _super.call(this, $scope, $mdToast) || this;
             _this.dataSvc = dataSvc;
             _this.getClientList = function () {
-                _this.dataSvc.getPathwayDetail().then(function (data) {
+                _this.dataSvc.getPathwayDetail(_this.$scope.project).then(function (data) {
                     _this.clientList = data;
                     console.log(data);
                 }).catch(function (error) {
@@ -34,21 +34,23 @@ var CrudDataGridExtension;
             _this.ViewClient = function (id) {
                 _this.ShowInfo(id);
                 console.log(id);
-                _this.dataSvc.getInfoByid(id).then(function (data) {
+                /*this.dataSvc.getInfoByid(id).then((data) => {
                     console.log(data);
-                }).catch(function (error) {
+                }).catch((error) => {
                     console.log(error);
-                }).finally(function () {
-                });
+                }).finally(() => {
+    
+                })*/
             };
             _this.UpdateClient = function (id) {
                 _this.ShowInfo(id);
-                _this.dataSvc.updateClient(id).then(function (data) {
-                    console.log(data);
-                }).catch(function (error) {
-                    console.log(error);
-                }).finally(function () {
-                });
+                //window.location.href = "/Student/Update?ClientId="+id;
+                //this.dataSvc.updateClient(id).then((data) => {
+                console.log(id);
+                //}).catch((error) => {
+                //    console.log(error);
+                //}).finally(() => {
+                //})
             };
             _this.DeleteClient = function (ClientId) {
                 var confirm = _this.$mdDialog.confirm()

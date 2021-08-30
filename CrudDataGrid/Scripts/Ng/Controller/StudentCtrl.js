@@ -32,11 +32,25 @@ var CrudDataGridExtension;
                 }).finally(function () {
                 });
             };
+            _this.UpdateClient = function () {
+                _this.dataSvc.updateClient(_this.$scope.project).then(function (data) {
+                    _this.showMessage("Client update Successfully");
+                    _this.$scope.project = null;
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
+            _this.ShowInfo = function (id) {
+                window.location.href = "/Student/Update?ClientId=" + id;
+            };
             _this.$scope = $scope;
             $scope.project = {
+                ClientId: 0,
                 Description: '',
                 HourlyRate: 1234,
-                special: true,
+                Special: true,
                 TermsAndService: true,
                 ClientEmail: '',
                 ClientName: '',

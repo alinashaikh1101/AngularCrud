@@ -9,7 +9,7 @@ var CrudDataGridExtension;
         StudentDataService.prototype.postSkill = function (pathway) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44381/studentapi/InsertClient";
+            var apiUrl = "https://localhost:44381/StudentApi/InsertClient";
             ajaxApi({
                 url: apiUrl,
                 data: JSON.stringify(pathway),
@@ -20,16 +20,16 @@ var CrudDataGridExtension;
                 },
                 error: function (xhr) {
                     console.log(xhr);
-                    //Workpulse.Site.AlertJS(xhr)
+                    Workpulse.Site.AlertJS(xhr);
                     deferred.reject(xhr);
                 }
             });
             return deferred.promise;
         };
-        StudentDataService.prototype.getPathwayDetail = function () {
+        StudentDataService.prototype.getPathwayDetail = function (pathway) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44381/studentapi/GetClientList";
+            var apiUrl = "https://localhost:44381/StudentApi/GetClientList";
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
@@ -47,7 +47,7 @@ var CrudDataGridExtension;
         StudentDataService.prototype.getInfoByid = function (id) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44381/studentapi/GetClientById/" + id;
+            var apiUrl = "https://localhost:44381/StudentApi/GetClientById/" + id;
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
@@ -65,7 +65,7 @@ var CrudDataGridExtension;
         StudentDataService.prototype.deleteClient = function (ClientId) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44381/studentapi/DeleteClient?ClientId=" + ClientId;
+            var apiUrl = "https://localhost:44381/StudentApi/DeleteClient?ClientId=" + ClientId;
             ajaxApi({
                 url: apiUrl,
                 type: 'GET',
@@ -83,7 +83,7 @@ var CrudDataGridExtension;
         StudentDataService.prototype.updateClient = function (pathway) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44381/studentapi/UpdateClient/";
+            var apiUrl = "https://localhost:44381/StudentApi/UpdateClient/";
             ajaxApi({
                 url: apiUrl,
                 type: 'POST',

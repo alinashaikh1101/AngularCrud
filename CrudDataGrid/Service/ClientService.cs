@@ -17,13 +17,13 @@ namespace CrudDataGrid.Service
         {
             Employe clientObj = new Employe()
             {
-                ClientId = model.ClientId,
+                //ClientId = model.ClientId.Value,
                 Description = model.Description,
                 ClientName = model.ClientName,
                 ProjectType = model.ProjectType,
                 ClientEmail = model.ClientEmail,
                 HourlyRate = model.HourlyRate,
-                Tos = model.TermsAndService,
+                TermsAndService = model.TermsAndService,
                 Special = model.Special
             };
             entities.Employes.Add(clientObj);
@@ -31,7 +31,7 @@ namespace CrudDataGrid.Service
         }
         public List<ClientViewModel> GetClientList()
         {
-            //var clientRecord = entities.Clients.ToList();
+
             var clientRecord = entities.Employes.OrderByDescending(s => s.ClientId);
             List<ClientViewModel> vm = new List<ClientViewModel>();
             foreach (var client in clientRecord)
@@ -44,8 +44,7 @@ namespace CrudDataGrid.Service
                     ProjectType = client.ProjectType,
                     ClientEmail = client.ClientEmail,
                     HourlyRate = client.HourlyRate,
-                     
-                    Special = client.Special != null && client.Special
+                    Special = client!= null && client.Special
                 };
                 vm.Add(clientView);
             }
@@ -55,19 +54,19 @@ namespace CrudDataGrid.Service
 
         public ClientViewModel GetClientById(int id)
         {
-            var clientRecord = entities.Employes.Where(s => s.ClientId == id).FirstOrDefault();
-            if (clientRecord != null)
+            var client = entities.Employes.Where(s => s.ClientId == id).FirstOrDefault();
+            if (client != null)
             {
                 ClientViewModel clientView = new ClientViewModel()
                 {
-                    ClientId = clientRecord.ClientId,
-                    Description = clientRecord.Description,
-                    ClientName = clientRecord.ClientName,
-                    HourlyRate = clientRecord.HourlyRate,
-                    ClientEmail = clientRecord.ClientEmail,
-                    ProjectType = clientRecord.ProjectType,
-                    //TermsAndService = clientRecord.TermsAndService,
-                    special = clientRecord.Special != null && clientRecord.Special
+                    ClientId = client.ClientId,
+                    Description = client.Description,
+                    ClientName = client.ClientName,
+                    HourlyRate = client.HourlyRate,
+                    ClientEmail = client.ClientEmail,
+                    ProjectType = client.ProjectType,
+                    TermsAndService = client.TermsAndService,
+                    Special = client != null && client.Special
                 };
                 return clientView;
             }
@@ -76,21 +75,21 @@ namespace CrudDataGrid.Service
                 return null;
             }
         }
-        public int UpdateClient(ClientViewModel data)
+        public int UpdateClient(ClientViewModel model)
         {
-            var clientRecord = entities.Employes.Where(s => s.ClientId == data.ClientId).FirstOrDefault();
-            if (clientRecord != null)
+            var client = entities.Employes.Where(s => s.ClientId == model.ClientId).FirstOrDefault();
+            if (client != null)
             {
-                clientRecord.ClientId = data.ClientId;
-                clientRecord.Description = data.Description;
-                clientRecord.ClientName = data.ClientName;
-                clientRecord.ProjectType = data.ProjectType;
-                clientRecord.ClientEmail = data.ClientEmail;
-                clientRecord.HourlyRate = data.HourlyRate;
-                //clientRecord.TermsAndService = data.TermsAndService;
-                //clientRecord.special = data.special != null && data.special.Value;
+                client.ClientId = model.ClientId.Value;
+                client.Description = model.Description;
+                client.ClientName = model.ClientName;
+                client.ProjectType = model.ProjectType;
+                client.ClientEmail = model.ClientEmail;
+                client.HourlyRate = model.HourlyRate;
+                client.TermsAndService = model.TermsAndService;
+                //client.special = model.special != null && data.special.Value;
 
-                entities.Entry<Employe>(clientRecord).State = System.Data.Entity.EntityState.Modified;
+                entities.Entry<Employe>(client).State = System.Data.Entity.EntityState.Modified;
                 return entities.SaveChanges();
             }
             else

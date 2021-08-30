@@ -14,7 +14,7 @@ module CrudDataGridExtension {
         postSkill(pathway: IStudentModel): ng.IPromise<IStudentModel> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44381/studentapi/InsertClient";
+            var apiUrl = "https://localhost:44381/StudentApi/InsertClient";
             ajaxApi({
                 url: apiUrl,
                 data: JSON.stringify(pathway),
@@ -25,7 +25,7 @@ module CrudDataGridExtension {
                 },
                 error: (xhr) => {
                     console.log(xhr)
-                    //Workpulse.Site.AlertJS(xhr)
+                    Workpulse.Site.AlertJS(xhr)
                     deferred.reject(xhr);
                 }
 
@@ -33,10 +33,10 @@ module CrudDataGridExtension {
             return deferred.promise;
         }
 
-        getPathwayDetail(): ng.IPromise<IStudentModel[]> {
+        getPathwayDetail(pathway: IStudentModel): ng.IPromise<IStudentModel[]> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel[]>();
-            var apiUrl = "https://localhost:44381/studentapi/GetClientList";
+            var apiUrl = "https://localhost:44381/StudentApi/GetClientList";
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
@@ -54,7 +54,7 @@ module CrudDataGridExtension {
         getInfoByid(id: number): ng.IPromise<IStudentModel> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44381/studentapi/GetClientById/" + id;
+            var apiUrl = "https://localhost:44381/StudentApi/GetClientById/" + id;
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
@@ -72,7 +72,7 @@ module CrudDataGridExtension {
         deleteClient(ClientId: number): ng.IPromise<IStudentModel> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44381/studentapi/DeleteClient?ClientId=" + ClientId;
+            var apiUrl = "https://localhost:44381/StudentApi/DeleteClient?ClientId=" + ClientId;
             ajaxApi({
                 url: apiUrl,
                 type: 'GET',
@@ -91,7 +91,7 @@ module CrudDataGridExtension {
         updateClient(pathway: IStudentModel): ng.IPromise<IStudentModel> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44381/studentapi/UpdateClient/";
+            var apiUrl = "https://localhost:44381/StudentApi/UpdateClient/";
             ajaxApi({
                 url: apiUrl,
                 type: 'POST',

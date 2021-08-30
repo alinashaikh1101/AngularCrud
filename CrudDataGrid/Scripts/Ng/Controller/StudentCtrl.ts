@@ -32,9 +32,10 @@ module CrudDataGridExtension {
             super($scope, $mdToast);
             this.$scope = $scope;
             $scope.project = {
+                ClientId:0,
                 Description: '',
                 HourlyRate: 1234,
-                special: true,
+                Special: true,
                 TermsAndService: true,
                 ClientEmail: '',
                 ClientName: '',
@@ -60,7 +61,25 @@ module CrudDataGridExtension {
 
             })
         }
+
+        UpdateClient = () => {
+            
+            this.dataSvc.updateClient(this.$scope.project).then((data) => {
+
+                this.showMessage("Client update Successfully");
+                this.$scope.project = null;
+                console.log(data);
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+
+            })
+        }
+        ShowInfo = (id: number) => {
+            window.location.href = "/Student/Update?ClientId=" + id;
+        }
     }
+    
     StudentCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 
     var app = angular.module("studentApp", ['ngMaterial', 'ngMessages', 'ngSanitize']);

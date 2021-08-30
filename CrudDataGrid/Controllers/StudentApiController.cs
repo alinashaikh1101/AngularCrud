@@ -34,9 +34,9 @@ namespace CrudDataGrid.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult UpdateClient(ClientViewModel data)
+        public JsonResult UpdateClient(ClientViewModel model)
         {
-            var result = service.UpdateClient(data);
+            var result = service.UpdateClient(model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public JsonResult DeleteClient(int ClientId)

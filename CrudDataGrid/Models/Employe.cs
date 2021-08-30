@@ -22,5 +22,6 @@ namespace CrudDataGrid.Models
         public string Description { get; set; }
         public bool Tos { get; set; }
         public bool Special { get; set; }
+        public bool TermsAndService { get; internal set; }
     }
 }

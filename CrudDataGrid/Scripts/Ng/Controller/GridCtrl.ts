@@ -1,6 +1,8 @@
 ﻿/// <reference path="../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../typings/jQuery/jquery.d.ts" />
 /// <reference path="../../typings/devexpress-web/devexpress-web.d.ts" />
+
+
 module CrudDataGridExtension {
     export interface IPathwayScope extends ng.IScope {
         loading: boolean;
@@ -8,8 +10,8 @@ module CrudDataGridExtension {
         Description: String;
         ClientName: String;
         ClientEmail: String;
-        Project: String;
-        Rate: String;
+        ProjectType: String;
+        HourlyRate: number;
         TermsAndService: boolean;
         special: boolean;
 
@@ -20,8 +22,8 @@ module CrudDataGridExtension {
         Description: String;
         ClientName: String;
         ClientEmail: String;
-        Project: String;
-        Rate: String;
+        ProjectType: String;
+        HourlyRate: String;
         TermsAndService: boolean;
         special: boolean;
 
@@ -36,7 +38,8 @@ module CrudDataGridExtension {
             super($scope, $mdToast);
             this.$scope = $scope;
             this.$mdDialog = $mdDialog;
-            this.clientAdd();
+            //this.clientAdd();
+            
             this.getClientList();
         }
 
@@ -48,10 +51,10 @@ module CrudDataGridExtension {
 
         clientList: IStudentModel[];
         getClientList = () => {
-            this.dataSvc.getPathwayDetail().then((data) => {
+            this.dataSvc.getPathwayDetail(this.$scope.project).then((data) => {
+                var Employe: String[] = new Array(100);
                 this.clientList = data;
                 console.log(data);
-
                 this.ClientGrid();
 
             }).catch((error) => {
@@ -61,26 +64,9 @@ module CrudDataGridExtension {
             })
         }
 
-        clientAdd = () => {
+    ClientGrid = () => {
 
-
-            $("#buttonContainer").dxButton({
-                //colTemplate: (options) => {
-                //    console.log("rows click",options.data);
-                /* $("<div/>").dxButton({*/
-                icon: "plus",
-                text: "add",
-                onClick: () => {
-                    this.InsertClient()
-                }
-            })
-        }
-        /* })*/
-        /*  }*/
-
-        ClientGrid = () => {
-
-            $("#gridContainer").dxDataGrid({
+        $("#gridContainer").dxDataGrid({
 
                 dataSource: this.clientList,
                 keyExpr: "ClientId",
@@ -99,7 +85,7 @@ module CrudDataGridExtension {
                             container.addClass("chart-cell");
                             console.log("rows click", options.data);
 
-                            //edit
+                            
                             $("<div/>").dxButton({
                                 icon: "edit",
                                 type: "default",
@@ -109,9 +95,9 @@ module CrudDataGridExtension {
                                 }
                             }).appendTo(container);
 
-                            //delete
+                            
                             $("<div/>").dxButton({
-                                icon: "trash",
+                                icon: "remove",
                                 type: "danger",
                                 text: "Delete",
                                 onClick: (e) => {
@@ -119,7 +105,7 @@ module CrudDataGridExtension {
                                 }
                             }).appendTo(container);
 
-                            //view 
+                            
                             $("<div/>").dxButton({
                                 icon: "info",
                                 type: "success",
@@ -135,12 +121,12 @@ module CrudDataGridExtension {
 
             });
 
-        }
+        }    
 
         InsertClient = () => {
             this.dataSvc.postSkill(this.$scope.project).then((data) => {
 
-                //this.showMessage("Client Added Successfully");
+                this.showMessage("Client Added Successfully");
                 this.$scope.project = null;
                 console.log(data);
             }).catch((error) => {
@@ -177,7 +163,7 @@ module CrudDataGridExtension {
 
         DeleteClient = (ClientId) => {
             var confirm = this.$mdDialog.confirm()
-                .title('Are you sure you want to delete')
+                .title('Are you sure you want to delete client ?')
                 .textContent('')
                 .ariaLabel('')
                 .targetEvent(null)
@@ -185,7 +171,7 @@ module CrudDataGridExtension {
                 .cancel('Cancel');
             this.$mdDialog.show(confirm).then(() => {
                 this.dataSvc.deleteClient(ClientId).then((data) => {
-                    //this.showMessage("Deleted Successfully");
+                    this.showMessage("Deleted Successfully");
                     console.log(data);
                     this.getClientList();
 

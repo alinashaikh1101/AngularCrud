@@ -1,3 +1,6 @@
+/// <reference path="../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../typings/jQuery/jquery.d.ts" />
+/// <reference path="../../typings/devexpress-web/devexpress-web.d.ts" />
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -13,9 +16,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-/// <reference path="../../typings/angularjs/angular.d.ts" />
-/// <reference path="../../typings/jQuery/jquery.d.ts" />
-/// <reference path="../../typings/devexpress-web/devexpress-web.d.ts" />
 var CrudDataGridExtension;
 (function (CrudDataGridExtension) {
     var GridCtrl = /** @class */ (function (_super) {
@@ -24,7 +24,8 @@ var CrudDataGridExtension;
             var _this = _super.call(this, $scope, $mdToast) || this;
             _this.dataSvc = dataSvc;
             _this.getClientList = function () {
-                _this.dataSvc.getPathwayDetail().then(function (data) {
+                _this.dataSvc.getPathwayDetail(_this.$scope.project).then(function (data) {
+                    var Employe = new Array(100);
                     _this.clientList = data;
                     console.log(data);
                     _this.ClientGrid();
@@ -33,20 +34,6 @@ var CrudDataGridExtension;
                 }).finally(function () {
                 });
             };
-            _this.clientAdd = function () {
-                $("#buttonContainer").dxButton({
-                    //colTemplate: (options) => {
-                    //    console.log("rows click",options.data);
-                    /* $("<div/>").dxButton({*/
-                    icon: "plus",
-                    text: "add",
-                    onClick: function () {
-                        _this.InsertClient();
-                    }
-                });
-            };
-            /* })*/
-            /*  }*/
             _this.ClientGrid = function () {
                 $("#gridContainer").dxDataGrid({
                     dataSource: _this.clientList,
@@ -65,7 +52,6 @@ var CrudDataGridExtension;
                             cellTemplate: function (container, options) {
                                 container.addClass("chart-cell");
                                 console.log("rows click", options.data);
-                                //edit
                                 $("<div/>").dxButton({
                                     icon: "edit",
                                     type: "default",
@@ -74,16 +60,14 @@ var CrudDataGridExtension;
                                         _this.UpdateClient(options.data.ClientId);
                                     }
                                 }).appendTo(container);
-                                //delete
                                 $("<div/>").dxButton({
-                                    icon: "trash",
+                                    icon: "remove",
                                     type: "danger",
                                     text: "Delete",
                                     onClick: function (e) {
                                         _this.DeleteClient(options.data.ClientId);
                                     }
                                 }).appendTo(container);
-                                //view 
                                 $("<div/>").dxButton({
                                     icon: "info",
                                     type: "success",
@@ -100,7 +84,7 @@ var CrudDataGridExtension;
             };
             _this.InsertClient = function () {
                 _this.dataSvc.postSkill(_this.$scope.project).then(function (data) {
-                    //this.showMessage("Client Added Successfully");
+                    _this.showMessage("Client Added Successfully");
                     _this.$scope.project = null;
                     console.log(data);
                 }).catch(function (error) {
@@ -129,7 +113,7 @@ var CrudDataGridExtension;
             };
             _this.DeleteClient = function (ClientId) {
                 var confirm = _this.$mdDialog.confirm()
-                    .title('Are you sure you want to delete')
+                    .title('Are you sure you want to delete client ?')
                     .textContent('')
                     .ariaLabel('')
                     .targetEvent(null)
@@ -137,7 +121,7 @@ var CrudDataGridExtension;
                     .cancel('Cancel');
                 _this.$mdDialog.show(confirm).then(function () {
                     _this.dataSvc.deleteClient(ClientId).then(function (data) {
-                        //this.showMessage("Deleted Successfully");
+                        _this.showMessage("Deleted Successfully");
                         console.log(data);
                         _this.getClientList();
                     }).catch(function (error) {
@@ -152,7 +136,7 @@ var CrudDataGridExtension;
             };
             _this.$scope = $scope;
             _this.$mdDialog = $mdDialog;
-            _this.clientAdd();
+            //this.clientAdd();
             _this.getClientList();
             return _this;
         }

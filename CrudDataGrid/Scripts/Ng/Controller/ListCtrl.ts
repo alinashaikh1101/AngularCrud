@@ -46,7 +46,7 @@ module CrudDataGridExtension {
 
         clientList: IStudentModel[];
         getClientList = () => {
-            this.dataSvc.getPathwayDetail().then((data) => {
+            this.dataSvc.getPathwayDetail(this.$scope.project).then((data) => {
                 this.clientList = data;
                 console.log(data);
             }).catch((error) => {
@@ -56,27 +56,29 @@ module CrudDataGridExtension {
             })
         }
 
+
         ViewClient = (id) => {
             this.ShowInfo(id);
             console.log(id);
-            this.dataSvc.getInfoByid(id).then((data) => {
+            /*this.dataSvc.getInfoByid(id).then((data) => {
                 console.log(data);
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {
 
-            })
+            })*/
         }
 
         UpdateClient = (id) => {
             this.ShowInfo(id);
-            this.dataSvc.updateClient(id).then((data) => {
-                console.log(data);
-            }).catch((error) => {
-                console.log(error);
-            }).finally(() => {
+            //window.location.href = "/Student/Update?ClientId="+id;
+            //this.dataSvc.updateClient(id).then((data) => {
+              console.log(id);
+            //}).catch((error) => {
+            //    console.log(error);
+            //}).finally(() => {
 
-            })
+            //})
         }
 
         DeleteClient = (ClientId) => {

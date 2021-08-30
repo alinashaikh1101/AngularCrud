@@ -17,15 +17,12 @@ namespace CrudDataGrid.Controllers
 
             return View();
         }
-        public ActionResult Update(int ClientId)
+        public ActionResult Update(int? ClientId=null)
         {
             ViewBag.Id = ClientId;
             return View();
         }
-        public ActionResult AllClient()
-        {
-            return View();
-        }
+
         public ActionResult DataGridView()
         {
             return View();
@@ -35,9 +32,9 @@ namespace CrudDataGrid.Controllers
             return View();
 
        }
-       
-
         
+
+
 
     }
 
