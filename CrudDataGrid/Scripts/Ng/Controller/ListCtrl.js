@@ -73,7 +73,7 @@ var CrudDataGridExtension;
                 });
             };
             _this.ShowInfo = function (id) {
-                window.location.href = "/Student/Update/" + id;
+                window.location.href = "/Student/Update?ClientId=" + id;
             };
             _this.$mdDialog = $mdDialog;
             _this.$scope = $scope;

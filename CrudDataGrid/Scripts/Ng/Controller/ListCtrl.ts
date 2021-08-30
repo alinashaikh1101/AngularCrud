@@ -57,7 +57,7 @@ module CrudDataGridExtension {
         }
 
 
-        ViewClient = (id) => {
+        ViewClient = (id: number) => {
             this.ShowInfo(id);
             console.log(id);
             /*this.dataSvc.getInfoByid(id).then((data) => {
@@ -69,7 +69,7 @@ module CrudDataGridExtension {
             })*/
         }
 
-        UpdateClient = (id) => {
+        UpdateClient = (id:number) => {
             this.ShowInfo(id);
             //window.location.href = "/Student/Update?ClientId="+id;
             //this.dataSvc.updateClient(id).then((data) => {
@@ -105,7 +105,7 @@ module CrudDataGridExtension {
         }
 
         ShowInfo = (id: number) => {
-            window.location.href = "/Student/Update/" + id;
+            window.location.href = "/Student/Update?ClientId="+id;
         }
     }
     ListCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
