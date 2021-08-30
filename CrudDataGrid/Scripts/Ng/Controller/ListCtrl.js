@@ -62,7 +62,7 @@ var CrudDataGridExtension;
                     .cancel('Cancel');
                 _this.$mdDialog.show(confirm).then(function () {
                     _this.dataSvc.deleteClient(ClientId).then(function (data) {
-                        //this.showMessage("Deleted Successfully");
+                        _this.showMessage("Deleted Successfully");
                         console.log(data);
                         _this.getClientList();
                     }).catch(function (error) {

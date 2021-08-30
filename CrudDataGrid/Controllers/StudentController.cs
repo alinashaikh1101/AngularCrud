@@ -31,7 +31,7 @@ namespace CrudDataGrid.Controllers
         {
             return View();
 
-       }
+        }
         
 
 

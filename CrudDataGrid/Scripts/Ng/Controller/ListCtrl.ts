@@ -91,7 +91,7 @@ module CrudDataGridExtension {
                 .cancel('Cancel');
             this.$mdDialog.show(confirm).then(() => {
                 this.dataSvc.deleteClient(ClientId).then((data) => {
-                    //this.showMessage("Deleted Successfully");
+                    this.showMessage("Deleted Successfully");
                     console.log(data);
                     this.getClientList();
 
