@@ -44,11 +44,11 @@ var CrudDataGridExtension;
                         { caption: "ClientEmail", dataField: "ClientEmail" },
                         { caption: "ProjectType", dataField: "ProjectType" },
                         { caption: "HourlyRate", dataField: "HourlyRate", alignment: "center" },
-                        { caption: "Terms and Conditions", dataField: "TermsAndService" },
-                        { caption: "Special", dataField: "special" },
+                        //{ caption: "TermsAndService", dataField: "TermsAndService" },
+                        //{ caption: "Special", dataField: "special" },
                         {
                             caption: "Action",
-                            minWidth: 330,
+                            minWidth: 340,
                             cellTemplate: function (container, options) {
                                 container.addClass("chart-cell");
                                 console.log("rows click", options.data);
@@ -61,7 +61,7 @@ var CrudDataGridExtension;
                                     }
                                 }).appendTo(container);
                                 $("<div/>").dxButton({
-                                    icon: "remove",
+                                    icon: "clear",
                                     type: "danger",
                                     text: "Delete",
                                     onClick: function (e) {
@@ -76,10 +76,21 @@ var CrudDataGridExtension;
                                         _this.ViewClient(options.data.ClientId);
                                     }
                                 }).appendTo(container);
+                                $("<div/>").dxButton({
+                                    icon: "",
+                                    type: "filters",
+                                    text: "filter",
+                                    onClick: function (e) {
+                                        _this.filter();
+                                    }
+                                }).appendTo(container);
                             }
                         }
                     ],
                     showBorders: true,
+                    allowColumnReordering: true,
+                    allowColumnResizing: true,
+                    columnAutoWidth: true,
                 });
             };
             _this.InsertClient = function () {
@@ -129,6 +140,18 @@ var CrudDataGridExtension;
                     }).finally(function () {
                     });
                 }, function () {
+                });
+            };
+            _this.filter = function () {
+                _this.dataSvc.filter(_this.$scope.project).then(function (data) {
+                    var Employe = new Array(100);
+                    _this.filterlist = data;
+                    //this.clientList = data;
+                    console.log(data);
+                    _this.ClientGrid();
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
                 });
             };
             _this.ShowInfo = function (id) {

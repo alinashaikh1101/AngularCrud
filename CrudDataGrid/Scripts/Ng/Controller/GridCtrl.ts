@@ -33,13 +33,14 @@ module CrudDataGridExtension {
 
         $scope: CrudDataGridExtension.IPathwayScope;
         private $mdDialog: any;
+        filterlist: IStudentModel;
         constructor($scope: CrudDataGridExtension.IPathwayScope, private dataSvc: StudentDataService, $timeout, $mdDialog: any, $mdSelect: any, $mdToast: any) {
 
             super($scope, $mdToast);
             this.$scope = $scope;
             this.$mdDialog = $mdDialog;
             //this.clientAdd();
-            
+
             this.getClientList();
         }
 
@@ -64,9 +65,9 @@ module CrudDataGridExtension {
             })
         }
 
-    ClientGrid = () => {
+        ClientGrid = () => {
 
-        $("#gridContainer").dxDataGrid({
+            $("#gridContainer").dxDataGrid({
 
                 dataSource: this.clientList,
                 keyExpr: "ClientId",
@@ -76,16 +77,16 @@ module CrudDataGridExtension {
                     { caption: "ClientEmail", dataField: "ClientEmail" },
                     { caption: "ProjectType", dataField: "ProjectType" },
                     { caption: "HourlyRate", dataField: "HourlyRate", alignment: "center" },
-                    { caption: "Terms and Conditions", dataField: "TermsAndService" },
-                    { caption: "Special", dataField: "special" },
+                    //{ caption: "TermsAndService", dataField: "TermsAndService" },
+                    //{ caption: "Special", dataField: "special" },
                     {
                         caption: "Action",
-                        minWidth: 330,
+                        minWidth: 340,
                         cellTemplate: (container, options) => {
                             container.addClass("chart-cell");
                             console.log("rows click", options.data);
 
-                            
+
                             $("<div/>").dxButton({
                                 icon: "edit",
                                 type: "default",
@@ -95,9 +96,9 @@ module CrudDataGridExtension {
                                 }
                             }).appendTo(container);
 
-                            
+
                             $("<div/>").dxButton({
-                                icon: "remove",
+                                icon: "clear",
                                 type: "danger",
                                 text: "Delete",
                                 onClick: (e) => {
@@ -105,7 +106,7 @@ module CrudDataGridExtension {
                                 }
                             }).appendTo(container);
 
-                            
+
                             $("<div/>").dxButton({
                                 icon: "info",
                                 type: "success",
@@ -114,14 +115,27 @@ module CrudDataGridExtension {
                                     this.ViewClient(options.data.ClientId);
                                 }
                             }).appendTo(container);
+
+                            $("<div/>").dxButton({
+                                icon: "",
+                                type: "filters",
+                                text: "filter",
+                                onClick: (e) => {
+                                    this.filter();
+                                }
+                            }).appendTo(container);
                         }
 
                     }],
+
                 showBorders: true,
+                allowColumnReordering: true,
+                allowColumnResizing: true,
+                columnAutoWidth: true,
 
             });
 
-        }    
+        }
 
         InsertClient = () => {
             this.dataSvc.postSkill(this.$scope.project).then((data) => {
@@ -183,6 +197,22 @@ module CrudDataGridExtension {
             }, () => {
             });
         }
+        filtertlist: IStudentModel[];
+        filter = () => {
+            this.dataSvc.filter(this.$scope.project).then((data) => {
+                var Employe: String[] = new Array(100);
+                this.filterlist = data;
+                //this.clientList = data;
+                console.log(data);
+                this.ClientGrid();
+
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+
+            })
+        }
+    
 
         ShowInfo = (id: number) => {
             window.location.href = "/Student/Update?ClientId=" + id;

@@ -173,6 +173,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LinqApiController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentApiController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ClientService.cs" />
+    <Compile Include="Service\LinqService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\ClientViewModel.cs" />
   </ItemGroup>
@@ -1093,6 +1095,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\LinqApi\" />
+    <Folder Include="Views\Linq\" />
     <Folder Include="Views\StudentApi\" />
   </ItemGroup>
   <ItemGroup>
