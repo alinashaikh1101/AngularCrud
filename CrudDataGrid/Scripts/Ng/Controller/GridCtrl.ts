@@ -80,7 +80,7 @@ module CrudDataGridExtension {
                     { caption: "Special", dataField: "special" },
                     {
                         caption: "Action",
-                        minwidth: 325,
+                        minWidth: 330,
                         cellTemplate: (container, options) => {
                             container.addClass("chart-cell");
                             console.log("rows click", options.data);
