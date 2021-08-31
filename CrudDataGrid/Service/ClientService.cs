@@ -87,7 +87,7 @@ namespace CrudDataGrid.Service
                 client.ClientEmail = model.ClientEmail;
                 client.HourlyRate = model.HourlyRate;
                 client.TermsAndService = model.TermsAndService;
-                //client.special = model.special != null && data.special.Value;
+                
 
                 entities.Entry<Employe>(client).State = System.Data.Entity.EntityState.Modified;
                 return entities.SaveChanges();

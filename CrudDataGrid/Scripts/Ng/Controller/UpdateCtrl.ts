@@ -19,10 +19,10 @@ module CrudDataGridExtension {
         Description: String;
         ClientName: String;
         ClientEmail: String;
-        Project: String;
-        Rate: String;
+        ProjectType: String;
+        HourlyRate: String;
         TermsAndService: boolean;
-        special: boolean;
+        Special: boolean;
         infoId: number;
 
         $scope: CrudDataGridExtension.IPathwayScope;

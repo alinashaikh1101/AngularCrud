@@ -7,10 +7,10 @@ module CrudDataGridExtension {
         Description: String;
         ClientName: String;
         ClientEmail: String;
-        Project: String;
-        Rate: String;
+        ProjectType: String;
+        HourlyRate: number;
         TermsAndService: boolean;
-        special: boolean;
+        Special: boolean;
 
         project: IStudentModel
     }
@@ -20,10 +20,10 @@ module CrudDataGridExtension {
         Description: String;
         ClientName: String;
         ClientEmail: String;
-        Project: String;
-        Rate: String;
+        ProjectType: String;
+        HourlyRate: number;
         TermsAndService: boolean;
-        special: boolean;
+        Special: boolean;
 
         infoId: number;
         project: IStudentModel;
