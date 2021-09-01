@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Join";
+}
+@section HeadContent {
+    @Styles.Render("~/Content/Student")
+    @Styles.Render("~/Content/css")
+}
+<br />
+<br />
+<br />
+
+
+<div ng-app="studentApp" ng-controller="ListCtrl as Vm" ng-cloak>
+    <div>
+        <table class="table table-bordered table-hover table-responsive">
+            <tr>
+                <th>
+                    <span>ClientId</span>
+                </th>
+                <th>
+                    <span>Description</span>
+                </th>
+                <th>
+                    <span>ClientName</span>
+                </th>
+                <th>
+                    <span>ProjectType</span>
+                </th>
+                <th>
+                    <span>ClientEmail</span>
+                </th>
+                <th>
+                    <span>HourlyRate</span>
+                </th>
+                <th>
+                    <span>TermsAndService</span>
+                </th>
+                <th>
+                    <span>Special</span>
+                </th>
+                <th>
+                    <span>Action</span>
+                </th>
+            </tr>
+            <tr ng-repeat="data in Vm.clientList">
+                <td>{{data.ClientId}}</td>
+                <td>{{data.Description}}</td>
+                <td>{{data.ClientName}}</td>
+                <td>{{data.ProjectType}}</td>
+                <td>{{data.ClientEmail}}</td>
+                <td>{{data.HourlyRate}}</td>
+                <td>
+                    <md-checkbox class="chkbox" ng-model="data.TermsAndService" ng-disabled="true"></md-checkbox>
+                </td>
+                <td>
+                    <md-checkbox ng-model="data.Special" ng-disabled="true"></md-checkbox>
+                </td>
+                <td>
+                    <md-button class="buttontext md-raised md-primary" ng-click="Vm.ShowInfo(data.ClientId)">View</md-button>
+                    <md-button class="buttontext md-raised md-primary" ng-click="Vm.UpdateClient(data.ClientId)">Update</md-button>
+                    <md-button class="buttontext md-raised md-warn" ng-click="Vm.DeleteClient(data.ClientId)">Delete</md-button>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

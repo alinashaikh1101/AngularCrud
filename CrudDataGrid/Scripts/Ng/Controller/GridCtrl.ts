@@ -16,6 +16,7 @@ module CrudDataGridExtension {
         special: boolean;
 
         project: IStudentModel
+        
     }
     export class GridCtrl extends wp.angularBase.BaseCtrl implements angular.IController {
         ClientId: number;
@@ -23,7 +24,7 @@ module CrudDataGridExtension {
         ClientName: String;
         ClientEmail: String;
         ProjectType: String;
-        HourlyRate: String;
+        HourlyRate: number;
         TermsAndService: boolean;
         special: boolean;
 
@@ -34,6 +35,9 @@ module CrudDataGridExtension {
         $scope: CrudDataGridExtension.IPathwayScope;
         private $mdDialog: any;
         filterlist: IStudentModel;
+        grouplist: IStudentModel;
+        
+        
         constructor($scope: CrudDataGridExtension.IPathwayScope, private dataSvc: StudentDataService, $timeout, $mdDialog: any, $mdSelect: any, $mdToast: any) {
 
             super($scope, $mdToast);
@@ -124,6 +128,16 @@ module CrudDataGridExtension {
                                     this.filter();
                                 }
                             }).appendTo(container);
+
+                            $("<div/>").dxButton({
+                                icon: "",
+                                type: "group",
+                                text: "group",
+                                onClick: (e) => {
+                                    this.Grouping();
+                                }
+                            }).appendTo(container);
+
                         }
 
                     }],
@@ -167,6 +181,7 @@ module CrudDataGridExtension {
         UpdateClient = (id) => {
             this.ShowInfo(id);
             this.dataSvc.updateClient(id).then((data) => {
+                this.showMessage("Client  Successfully");
                 console.log(data);
             }).catch((error) => {
                 console.log(error);
@@ -212,7 +227,35 @@ module CrudDataGridExtension {
 
             })
         }
-    
+        grouplists: IStudentModel[];
+        Grouping = () => {
+            this.dataSvc.Grouping(this.$scope.project).then((data) => {
+                var Employe: String[] = new Array(100);
+                this.grouplist = data;
+                
+                console.log(data);
+                this.ClientGrid();
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+            });
+        };
+        joinList: IStudentModel[];
+        joindata = () => {
+            this.dataSvc.joindata(this.$scope.project).then((data) => {
+                var Employe: String[] = new Array(100);
+                this.joindata = data;
+
+                console.log(data);
+                this.ClientGrid();
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+            });
+        };
+        
+       
+        
 
         ShowInfo = (id: number) => {
             window.location.href = "/Student/Update?ClientId=" + id;

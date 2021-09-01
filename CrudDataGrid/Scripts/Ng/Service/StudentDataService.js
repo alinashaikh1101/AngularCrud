@@ -118,6 +118,42 @@ var CrudDataGridExtension;
             });
             return deferred.promise;
         };
+        StudentDataService.prototype.Grouping = function (pathway) {
+            var self = this;
+            var deferred = self.qService.defer();
+            var apiUrl = "https://localhost:44381/LinqApi/Grouping/";
+            ajaxApi({
+                type: 'GET',
+                url: apiUrl,
+                success: function (response) {
+                    deferred.resolve(response);
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                    Workpulse.Site.AlertJS(xhr);
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        };
+        StudentDataService.prototype.joindata = function (pathway) {
+            var self = this;
+            var deferred = self.qService.defer();
+            var apiUrl = "https://localhost:44381/LinqApi/joindata/";
+            ajaxApi({
+                type: 'GET',
+                url: apiUrl,
+                success: function (response) {
+                    deferred.resolve(response);
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                    Workpulse.Site.AlertJS(xhr);
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        };
         StudentDataService.StudentDataServiceFactory = function ($http, $q) {
             return new StudentDataService($http, $q);
         };

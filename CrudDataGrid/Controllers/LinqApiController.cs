@@ -20,5 +20,17 @@ namespace CrudDataGrid.Controllers
             var result = service.filter();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public JsonResult Grouping()
+        {
+            var result = service.Grouping();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult joindata()
+        {
+            var result = service.joindata();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

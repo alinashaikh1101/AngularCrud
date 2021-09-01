@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
 namespace CrudDataGrid.ViewModel
 {
     public class ClientViewModel
@@ -16,5 +17,11 @@ namespace CrudDataGrid.ViewModel
         public bool TermsAndService { get; set; }
         public bool Special { get; set; }
        
+    }
+    public class EmployeeViewModel
+    {
+        
+        public string ProjectType { get; set; }
+        public List<EmployeeViewModel> clientViews { get; set; }
     }
 }

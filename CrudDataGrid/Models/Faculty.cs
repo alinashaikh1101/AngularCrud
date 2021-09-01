@@ -12,22 +12,13 @@ namespace CrudDataGrid.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Employe
-    {
-        public int ClientId { get; set; }
-        public string ClientName { get; set; }
-        public string ClientEmail { get; set; }
-        public string ProjectType { get; set; }
-        public int HourlyRate { get; set; }
-        public string Description { get; set; }
-        public bool Tos { get; set; }
-        public bool Special { get; set; }
-    }
-    public  partial class Faculty
+    public partial class Faculty
     {
         public int FacultyId { get; set; }
         public string FacultyName { get; set; }
-
-
+        public string FacultyEmail { get; set; }
+        public string Description { get; set; }
+        public bool Tos { get; set; }
+        public bool Special { get; set; }
     }
 }

@@ -26,5 +26,6 @@ namespace CrudDataGrid.Models
         }
     
         public virtual DbSet<Employe> Employes { get; set; }
+        public virtual DbSet<Faculty> Faculties { get; set; }
     }
 }

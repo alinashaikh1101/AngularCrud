@@ -127,6 +127,43 @@ module CrudDataGridExtension {
             });
             return deferred.promise;
         }
+
+        Grouping(pathway: IStudentModel): ng.IPromise<IStudentModel> {
+            var self = this;
+            var deferred = self.qService.defer<IStudentModel>();
+            var apiUrl = "https://localhost:44381/LinqApi/Grouping/";
+            ajaxApi({
+                type: 'GET',
+                url: apiUrl,
+                success: (response: IStudentModel) => {
+                    deferred.resolve(response);
+                },
+                error: (xhr) => {
+                    console.log(xhr)
+                    Workpulse.Site.AlertJS(xhr)
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        }
+        joindata(pathway: IStudentModel): ng.IPromise<IStudentModel> {
+            var self = this;
+            var deferred = self.qService.defer<IStudentModel>();
+            var apiUrl = "https://localhost:44381/LinqApi/joindata/";
+            ajaxApi({
+                type: 'GET',
+                url: apiUrl,
+                success: (response: IStudentModel) => {
+                    deferred.resolve(response);
+                },
+                error: (xhr) => {
+                    console.log(xhr)
+                    Workpulse.Site.AlertJS(xhr)
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        }
        
 
         public static StudentDataServiceFactory($http: ng.IHttpService, $q: ng.IQService): StudentDataService {

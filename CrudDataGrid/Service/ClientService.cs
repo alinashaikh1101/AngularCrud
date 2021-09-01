@@ -23,7 +23,7 @@ namespace CrudDataGrid.Service
                 ProjectType = model.ProjectType,
                 ClientEmail = model.ClientEmail,
                 HourlyRate = model.HourlyRate,
-                TermsAndService = model.TermsAndService,
+                //TermsAndService = model.TermsAndService,
                 Special = model.Special
             };
             entities.Employes.Add(clientObj);
@@ -65,7 +65,7 @@ namespace CrudDataGrid.Service
                     HourlyRate = client.HourlyRate,
                     ClientEmail = client.ClientEmail,
                     ProjectType = client.ProjectType,
-                    TermsAndService = client.TermsAndService,
+                    //TermsAndService = client.TermsAndService,
                     Special = client != null && client.Special
                 };
                 return clientView;
@@ -86,7 +86,7 @@ namespace CrudDataGrid.Service
                 client.ProjectType = model.ProjectType;
                 client.ClientEmail = model.ClientEmail;
                 client.HourlyRate = model.HourlyRate;
-                client.TermsAndService = model.TermsAndService;
+                //client.TermsAndService = model.TermsAndService;
                 
 
                 entities.Entry<Employe>(client).State = System.Data.Entity.EntityState.Modified;

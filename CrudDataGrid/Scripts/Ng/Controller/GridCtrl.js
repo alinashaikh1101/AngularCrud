@@ -84,6 +84,14 @@ var CrudDataGridExtension;
                                         _this.filter();
                                     }
                                 }).appendTo(container);
+                                $("<div/>").dxButton({
+                                    icon: "",
+                                    type: "group",
+                                    text: "group",
+                                    onClick: function (e) {
+                                        _this.Grouping();
+                                    }
+                                }).appendTo(container);
                             }
                         }
                     ],
@@ -116,6 +124,7 @@ var CrudDataGridExtension;
             _this.UpdateClient = function (id) {
                 _this.ShowInfo(id);
                 _this.dataSvc.updateClient(id).then(function (data) {
+                    _this.showMessage("Client  Successfully");
                     console.log(data);
                 }).catch(function (error) {
                     console.log(error);
@@ -147,6 +156,17 @@ var CrudDataGridExtension;
                     var Employe = new Array(100);
                     _this.filterlist = data;
                     //this.clientList = data;
+                    console.log(data);
+                    _this.ClientGrid();
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
+            _this.Grouping = function () {
+                _this.dataSvc.Grouping(_this.$scope.project).then(function (data) {
+                    var Employe = new Array(100);
+                    _this.grouplist = data;
                     console.log(data);
                     _this.ClientGrid();
                 }).catch(function (error) {
