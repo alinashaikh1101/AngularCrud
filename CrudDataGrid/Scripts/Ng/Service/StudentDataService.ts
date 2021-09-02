@@ -146,14 +146,14 @@ module CrudDataGridExtension {
             });
             return deferred.promise;
         }
-        joindata(pathway: IStudentModel): ng.IPromise<IStudentModel> {
+        joindata(pathway: IStudentModel): ng.IPromise<IStudentModel[]> {
             var self = this;
-            var deferred = self.qService.defer<IStudentModel>();
+            var deferred = self.qService.defer<IStudentModel[]>();
             var apiUrl = "https://localhost:44381/LinqApi/joindata/";
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
-                success: (response: IStudentModel) => {
+                success: (response: IStudentModel[]) => {
                     deferred.resolve(response);
                 },
                 error: (xhr) => {

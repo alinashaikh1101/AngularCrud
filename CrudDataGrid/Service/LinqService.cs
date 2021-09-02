@@ -45,6 +45,11 @@ namespace CrudDataGrid.Service
             List<EmployeeViewModel> vm = new List<EmployeeViewModel>();
             foreach (var client in empGroup)
             {
+                EmployeeViewModel vms = new EmployeeViewModel
+                {
+                    ProjectType = client.Key,
+                    clientViews = new List<ClientViewModel>()
+                };
                 var employes = client.ToList();
                 List<ClientViewModel> clientList = new List<ClientViewModel>();
                 foreach (var emp in employes)
@@ -59,15 +64,10 @@ namespace CrudDataGrid.Service
                         HourlyRate = emp.HourlyRate,
                         Special = emp != null && emp.Special
                     };
+                    vms.clientViews.Add(clientView);
                 }
-                //EmployeeViewModel employee = new EmployeeViewModel();
-                //{
 
-                //    ProjectType = client.Key;
-                //    employes = clientList;
-
-                //}
-                //vm.Add(employee);
+                vm.Add(vms);
             }
             return null;
         }
@@ -75,14 +75,14 @@ namespace CrudDataGrid.Service
         {
             DemoEntities entities = new DemoEntities();
             {
-               var result = entities.Faculties.GroupJoin(entities.Employes,
-                    f => f.FacultyId,
-                    e => e.FacultyId,
-                     (Faculty, Employes) => new
-                     {
-                         facultys = Faculty,
-                         employee = Employes
-                     });
+                var result = entities.Faculties.GroupJoin(entities.Employes,
+                     f => f.FacultyId,
+                     e => e.FacultyId,
+                      (Faculty, Employes) => new
+                      {
+                          facultys = Faculty,
+                          employee = Employes
+                      });
                 List<FacultyViewModel> vm = new List<FacultyViewModel>();
                 foreach (var Facultys in result)
                 {
@@ -112,13 +112,13 @@ namespace CrudDataGrid.Service
                         Tos = Facultys.facultys.Tos,
                         Special = Facultys.facultys.Special,
                         Employees = empList
-                        
+
                     };
                     vm.Add(fact);
                 }
                 return vm;
             }
-            
+
         }
 
     }

@@ -13,50 +13,114 @@
 <div ng-app="studentApp" ng-controller="ListCtrl as Vm" ng-cloak>
     <div>
         <table class="table table-bordered table-hover table-responsive">
-            <tr>
-                <th>
-                    <span>FacultyId</span>
-                </th>
-                <th>
-                    <span>FacultyName</span>
-                </th>
-                <th>
-                    <span>FacultyEmail</span>
-                </th>
-                <th>
-                    <span>Description</span>
-                </th>
-                <th>
-                    <span>Tos</span>
-                </th>
-                <th>
-                    <span>Special</span>
-                </th>
+            
+            <tr ng-repeat="data in Vm.joindata">
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>{{data.FacultyId}}</td>
+                                        <td>{{data.FacultyName}}</td>
+                                        <td>{{data.FacultyEmail}}</td>
+                                        <td>{{data.Description}}</td>
+                                        <td>{{data.Tos}}</td>
+                                        <td>{{data.Special}}</td>
 
-                <th>
-                    <span>Action</span>
-                </th>
-            </tr>
-            <tr ng-repeat="data.Faculty in Vm.clientList">
-                <td>{{data.Faculty.FacultyId}}</td>
-                <td>{{data.Faculty.FacultyName}}</td>
-                <td>{{data.Faculty.FacultyEmail}}</td>
-                <td>{{data.Faculty.Description}}</td>
-                <td>{{data.Faculty.Tos}}</td>
-                <td>{{data.Faculty.Special}}</td>
-                <td>
-                    <md-checkbox class="chkbox" ng-model="data.TermsAndService" ng-disabled="true"></md-checkbox>
-                </td>
-                <td>
-                    <md-checkbox ng-model="data.Special" ng-disabled="true"></md-checkbox>
-                </td>
-                <td>
-                    <md-button class="buttontext md-raised md-primary" ng-click="Vm.ShowInfo(data.ClientId)">View</md-button>
-                    <md-button class="buttontext md-raised md-primary" ng-click="Vm.UpdateClient(data.ClientId)">Update</md-button>
-                    <md-button class="buttontext md-raised md-warn" ng-click="Vm.DeleteClient(data.ClientId)">Delete</md-button>
 
+                                        <td>
+                                            <md-checkbox class="chkbox" ng-model="data.TermsAndService" ng-disabled="true"></md-checkbox>
+                                        </td>
+
+                                        <td>
+                                            <md-checkbox ng-model="data.Special" ng-disabled="true"></md-checkbox>
+                                        </td>
+
+                                        <td>
+                                            <md-button class="buttontext md-raised md-primary" ng-click="Vm.ShowInfo(data.ClientId)">View</md-button>
+                                            <md-button class="buttontext md-raised md-primary" ng-click="Vm.UpdateClient(data.ClientId)">Update</md-button>
+                                            <md-button class="buttontext md-raised md-warn" ng-click="Vm.DeleteClient(data.ClientId)">Delete</md-button>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr ng-show="data.Employees.length > 0">
+                                        <th>
+                                            <span>ClientId</span>
+                                        </th>
+                                        <th>
+                                            <span>Description</span>
+                                        </th>
+                                        <th>
+                                            <span>ClientName</span>
+                                        </th>
+                                        <th>
+                                            <span>ProjectType</span>
+                                        </th>
+                                        <th>
+                                            <span>ClientEmail</span>
+                                        </th>
+                                        <th>
+                                            <span>HourlyRate</span>
+                                        </th>
+
+
+                                        <th>
+                                            <span>Action</span>
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="emp in data.Employees">
+                                        <td>{{emp.ClientId}}</td>
+                                        <td>{{emp.Description}}</td>
+                                        <td>{{emp.ClientName}}</td>
+                                        <td>{{emp.ProjectType}}</td>
+                                        <td>{{emp.ClientEmail}}</td>
+                                        <td>{{emp.HourlyRate}}</td>
+
+                                        <td>
+                                            @*<md-button class="buttontext md-raised md-primary" ng-click="Vm.ShowInfo(data.ClientId)">View</md-button>*@
+                                            <md-button class="buttontext md-raised md-primary" ng-click="Vm.UpdateClient(emp.ClientId)">Update</md-button>
+                                            <md-button class="buttontext md-raised md-warn" ng-click="Vm.DeleteClient(emp.ClientId)">Delete</md-button>
+
+                                        </td>
+
+
+
+
+
+
+
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
+               
             </tr>
+        </table>
+        <table class="table table-bordered table-hover table-responsive">
+          
+
+
+
+
         </table>
     </div>
 </div>
+
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/Angular")
+    @Scripts.Render("~/bundles/Common")
+    @Scripts.Render("~/bundles/StudentList")
+}
+

@@ -36,6 +36,7 @@ module CrudDataGridExtension {
             this.$mdDialog = $mdDialog;
             this.$scope = $scope;
             this.getClientList();
+            this.joindatas();
         }
 
         $onInit() {
@@ -103,6 +104,18 @@ module CrudDataGridExtension {
             }, () => {
             });
         }
+        joindata: IStudentModel[];
+        joindatas = () => {
+            this.dataSvc.joindata(this.$scope.project).then((data) => {
+                this.joindata = data;
+
+                console.log(data);
+                //this.ClientGrid();
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+            });
+        };
 
         ShowInfo = (id: number) => {
             window.location.href = "/Student/Update?ClientId="+id;

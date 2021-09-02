@@ -45,6 +45,7 @@ module CrudDataGridExtension {
             this.$scope = $scope;
             this.$mdDialog = $mdDialog;
             //this.clientAdd();
+            this.joindatas();
 
             this.getClientList();
         }
@@ -248,7 +249,7 @@ module CrudDataGridExtension {
                 this.joindata = data;
 
                 console.log(data);
-                this.ClientGrid();
+                //this.ClientGrid();
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {

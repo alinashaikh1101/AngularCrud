@@ -72,12 +72,23 @@ var CrudDataGridExtension;
                 }, function () {
                 });
             };
+            _this.joindatas = function () {
+                _this.dataSvc.joindata(_this.$scope.project).then(function (data) {
+                    _this.joindata = data;
+                    console.log(data);
+                    //this.ClientGrid();
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
             _this.ShowInfo = function (id) {
                 window.location.href = "/Student/Update?ClientId=" + id;
             };
             _this.$mdDialog = $mdDialog;
             _this.$scope = $scope;
             _this.getClientList();
+            _this.joindatas();
             return _this;
         }
         ListCtrl.prototype.$onInit = function () {

@@ -179,7 +179,7 @@ var CrudDataGridExtension;
                     var Employe = new Array(100);
                     _this.joindata = data;
                     console.log(data);
-                    _this.ClientGrid();
+                    //this.ClientGrid();
                 }).catch(function (error) {
                     console.log(error);
                 }).finally(function () {
@@ -191,6 +191,7 @@ var CrudDataGridExtension;
             _this.$scope = $scope;
             _this.$mdDialog = $mdDialog;
             //this.clientAdd();
+            _this.joindatas();
             _this.getClientList();
             return _this;
         }

@@ -22,7 +22,7 @@ namespace CrudDataGrid.ViewModel
     {
         
         public string ProjectType { get; set; }
-        public List<EmployeeViewModel> clientViews { get; set; }
+        public List<ClientViewModel> clientViews { get; set; }
        
     }
     
