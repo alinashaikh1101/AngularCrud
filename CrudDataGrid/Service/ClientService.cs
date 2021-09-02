@@ -15,18 +15,44 @@ namespace CrudDataGrid.Service
 
         public int InsertClient(ClientViewModel model)
         {
-            Employe clientObj = new Employe()
+
+            Faculty facultyObj = new Faculty()
             {
                 //ClientId = model.ClientId.Value,
+                Description = model.Description,
+                FacultyName = model.ClientName,
+                FacultyEmail = model.ClientEmail,
+                Tos = model.TermsAndService,
+                Special = model.Special
+            };
+            entities.Faculties.Add(facultyObj);
+            int facultyId = entities.SaveChanges();
+            Employe clientObj = new Employe()
+            {
+                FacultyId = facultyId,
                 Description = model.Description,
                 ClientName = model.ClientName,
                 ProjectType = model.ProjectType,
                 ClientEmail = model.ClientEmail,
                 HourlyRate = model.HourlyRate,
-                //TermsAndService = model.TermsAndService,
+                Tos = model.TermsAndService,
                 Special = model.Special
             };
             entities.Employes.Add(clientObj);
+            return entities.SaveChanges();
+        }
+        public int InsertClient(FacultyViewModel model)
+        {
+            Faculty clientObj = new Faculty()
+            {
+                //ClientId = model.ClientId.Value,
+                Description = model.Description,
+                FacultyName = model.FacultyName,
+                FacultyEmail = model.FacultyEmail,
+                 Tos= model.Tos,
+                Special= model.Special 
+            };
+            entities.Faculties.Add(clientObj);
             return entities.SaveChanges();
         }
         public List<ClientViewModel> GetClientList()

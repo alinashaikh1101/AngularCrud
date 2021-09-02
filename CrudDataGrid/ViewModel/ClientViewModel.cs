@@ -23,5 +23,22 @@ namespace CrudDataGrid.ViewModel
         
         public string ProjectType { get; set; }
         public List<EmployeeViewModel> clientViews { get; set; }
+       
+    }
+    
+
+    public class FacultyViewModel
+    {
+        public List<ClientViewModel> Employees { get; set; }
+        public int FacultyId { get; set; }
+
+        public string FacultyName { get; set;}
+
+        public string FacultyEmail { get; set; }
+        public string Description { get; set; }
+
+        public bool Tos { get; set; }
+        public bool Special { get; set; } 
+
     }
 }

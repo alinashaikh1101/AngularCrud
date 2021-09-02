@@ -22,12 +22,8 @@ namespace CrudDataGrid.Models
         public string Description { get; set; }
         public bool Tos { get; set; }
         public bool Special { get; set; }
-    }
-    public  partial class Faculty
-    {
         public int FacultyId { get; set; }
-        public string FacultyName { get; set; }
-
-
+    
+        public virtual Faculty Faculty { get; set; }
     }
 }

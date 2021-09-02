@@ -36,6 +36,7 @@ module CrudDataGridExtension {
         private $mdDialog: any;
         filterlist: IStudentModel;
         grouplist: IStudentModel;
+        joindata: IStudentModel;
         
         
         constructor($scope: CrudDataGridExtension.IPathwayScope, private dataSvc: StudentDataService, $timeout, $mdDialog: any, $mdSelect: any, $mdToast: any) {
@@ -241,7 +242,7 @@ module CrudDataGridExtension {
             });
         };
         joinList: IStudentModel[];
-        joindata = () => {
+        joindatas = () => {
             this.dataSvc.joindata(this.$scope.project).then((data) => {
                 var Employe: String[] = new Array(100);
                 this.joindata = data;

@@ -14,11 +14,20 @@ namespace CrudDataGrid.Models
     
     public partial class Faculty
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Faculty()
+        {
+            this.Employes = new HashSet<Employe>();
+        }
+    
         public int FacultyId { get; set; }
         public string FacultyName { get; set; }
         public string FacultyEmail { get; set; }
         public string Description { get; set; }
         public bool Tos { get; set; }
         public bool Special { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employe> Employes { get; set; }
     }
 }

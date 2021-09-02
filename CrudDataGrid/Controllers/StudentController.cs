@@ -17,7 +17,7 @@ namespace CrudDataGrid.Controllers
 
             return View();
         }
-        public ActionResult Update(int? ClientId=null)
+        public ActionResult Update(int? ClientId = null)
         {
             ViewBag.Id = ClientId;
             return View();
@@ -32,10 +32,15 @@ namespace CrudDataGrid.Controllers
             return View();
 
         }
-        
-
-
+        public ActionResult Join()
+        {
+            return View();
+        }
 
     }
-
 }
+
+
+
+
+

@@ -17,6 +17,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Tos" Type="bit" Nullable="false" />
           <Property Name="Special" Type="bit" Nullable="false" />
+          <Property Name="FacultyId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Faculty">
           <Key>
@@ -29,9 +30,25 @@
           <Property Name="Tos" Type="bit" Nullable="false" />
           <Property Name="Special" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Employe_Faculty">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+          <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="FacultyId" />
+            </Principal>
+            <Dependent Role="Employe">
+              <PropertyRef Name="FacultyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DemoModelStoreContainer">
           <EntitySet Name="Employe" EntityType="Self.Employe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employe_Faculty" Association="Self.FK_Employe_Faculty">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="Employe" EntitySet="Employe" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -49,10 +66,16 @@
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Tos" Type="Boolean" Nullable="false" />
           <Property Name="Special" Type="Boolean" Nullable="false" />
+          <Property Name="FacultyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Faculty" Relationship="DemoModel.FK_Employe_Faculty" FromRole="Employe" ToRole="Faculty" />
         </EntityType>
         <EntityContainer Name="DemoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employes" EntityType="Self.Employe" />
           <EntitySet Name="Faculties" EntityType="DemoModel.Faculty" />
+          <AssociationSet Name="FK_Employe_Faculty" Association="DemoModel.FK_Employe_Faculty">
+            <End Role="Faculty" EntitySet="Faculties" />
+            <End Role="Employe" EntitySet="Employes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Faculty">
           <Key>
@@ -64,7 +87,20 @@
           <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Tos" Type="Boolean" Nullable="false" />
           <Property Name="Special" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Employes" Relationship="DemoModel.FK_Employe_Faculty" FromRole="Faculty" ToRole="Employe" />
         </EntityType>
+        <Association Name="FK_Employe_Faculty">
+          <End Type="DemoModel.Faculty" Role="Faculty" Multiplicity="1" />
+          <End Type="DemoModel.Employe" Role="Employe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="FacultyId" />
+            </Principal>
+            <Dependent Role="Employe">
+              <PropertyRef Name="FacultyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -74,6 +110,7 @@
           <EntitySetMapping Name="Employes">
             <EntityTypeMapping TypeName="DemoModel.Employe">
               <MappingFragment StoreEntitySet="Employe">
+                <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="ClientName" ColumnName="ClientName" />
                 <ScalarProperty Name="ClientEmail" ColumnName="ClientEmail" />

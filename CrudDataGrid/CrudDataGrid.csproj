@@ -174,7 +174,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LinqApiController.cs" />
-    <Compile Include="Controllers\LinqJoinController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentApiController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -1097,6 +1096,7 @@
     <Content Include="Views\Student\Update.cshtml" />
     <Content Include="Views\Student\DataGridView.cshtml" />
     <Content Include="Views\LinqJoin\Join.cshtml" />
+    <Content Include="Views\Student\Join.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

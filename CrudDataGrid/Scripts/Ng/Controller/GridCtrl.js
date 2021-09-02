@@ -174,6 +174,17 @@ var CrudDataGridExtension;
                 }).finally(function () {
                 });
             };
+            _this.joindatas = function () {
+                _this.dataSvc.joindata(_this.$scope.project).then(function (data) {
+                    var Employe = new Array(100);
+                    _this.joindata = data;
+                    console.log(data);
+                    _this.ClientGrid();
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
             _this.ShowInfo = function (id) {
                 window.location.href = "/Student/Update?ClientId=" + id;
             };

@@ -27,9 +27,9 @@ namespace CrudDataGrid.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public JsonResult joindata()
+        public JsonResult JoinData()
         {
-            var result = service.joindata();
+            var result = service.JoinData();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
