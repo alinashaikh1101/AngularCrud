@@ -1,4 +1,5 @@
-﻿using CrudDataGrid.Models;
+﻿using AutoMapper;
+using CrudDataGrid.Models;
 using CrudDataGrid.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,25 @@ namespace CrudDataGrid.Service
         public int InsertClient(ClientViewModel model)
         {
 
-            Faculty facultyObj = new Faculty()
-            {
-                //ClientId = model.ClientId.Value,
-                Description = model.Description,
-                FacultyName = model.ClientName,
-                FacultyEmail = model.ClientEmail,
-                Tos = model.TermsAndService,
-                Special = model.Special
-            };
-            entities.Faculties.Add(facultyObj);
+            Mapper.CreateMap<ClientViewModel, Faculty>()
+                .ForMember(fac=>fac.FacultyName,opt => opt.MapFrom(d=>d.ClientName))
+                .ForMember(fac=>fac.FacultyEmail, opt => opt.MapFrom(d=>d.ClientEmail))
+                .ForMember(fac=>fac.Tos, opt => opt.MapFrom(d=>d.TermsAndService))
+                .ForMember(fac=>fac.FacultyId, opt => opt.Ignore());
+            
+            var mapObj = Mapper.Map<ClientViewModel, Faculty>(model);
+
+            //Faculty facultyObj = new Faculty()
+            //{
+            //    //ClientId = model.ClientId.Value,
+            //    Description = model.Description,
+            //    FacultyName = model.ClientName,
+            //    FacultyEmail = model.ClientEmail,
+
+            //    Tos = model.TermsAndService,
+            //    Special = model.Special
+            //};
+            entities.Faculties.Add(mapObj);
             int facultyId = entities.SaveChanges();
             Employe clientObj = new Employe()
             {
@@ -57,6 +67,13 @@ namespace CrudDataGrid.Service
         }
         public List<ClientViewModel> GetClientList()
         {
+
+            //Mapper.CreateMap<ClientViewModel, Faculty>()
+               //.ForMember(fac => fac.FacultyName, opt => opt.MapFrom(d => d.ClientName));
+            //List<ClientViewModel> ClientViews =Mapper.Map<List<Faculty>, List<ClientViewModel>>(model);
+
+
+
 
             var clientRecord = entities.Employes.OrderByDescending(s => s.ClientId);
             List<ClientViewModel> vm = new List<ClientViewModel>();

@@ -246,7 +246,7 @@ module CrudDataGridExtension {
         joindatas = () => {
             this.dataSvc.joindata(this.$scope.project).then((data) => {
                 var Employe: String[] = new Array(100);
-                this.joindata = data;
+                //this.joindata = data;
 
                 console.log(data);
                 //this.ClientGrid();

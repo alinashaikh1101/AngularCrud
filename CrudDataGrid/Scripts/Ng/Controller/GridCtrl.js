@@ -177,7 +177,7 @@ var CrudDataGridExtension;
             _this.joindatas = function () {
                 _this.dataSvc.joindata(_this.$scope.project).then(function (data) {
                     var Employe = new Array(100);
-                    _this.joindata = data;
+                    //this.joindata = data;
                     console.log(data);
                     //this.ClientGrid();
                 }).catch(function (error) {
